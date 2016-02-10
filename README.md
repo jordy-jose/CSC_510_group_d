@@ -2,53 +2,9 @@
 Academic Project - CSC 510 - Software Engineering
 
 Problem Statement:
-As the spring semester has started, also the race of finding a good internship started with it. 
-When I look at people around me I see everyone relentlessly applying for one company after other. 
-And as everyone else I had this realization few days back how monotonous and painful this process can be. 
-We are filling almost same data in every other form of different companies. 
-Chrome auto-fill comes to the rescue in some situations but most of the times it makes the matter only worse. 
-So, as everyone wants to apply to as many companies as possible in as less time as possible because we have 
-three subjects to study as well. It stuck me why can’t we revamp this auto-fill thing with context knowledge.
- 
-P.S: It will be lot easier to observe people doing this task for 12 hrs. As this is the only thing everyone is doing anyways.
- 
-The Idea:
-We can come up with a chrome plugin that takes user input beforehand or learn from the usage of browser 
-how the forms need to be filled. We maintain information with some context like social profile, application 
-profile etc. When I go to site and try to register or create an account my plug-in should be able to 
-identify the category for sit and enumerate my information accordingly. It should work on some of the 
-drawbacks of chrome auto-fill like giving the same primary email ID for every site or changing all the 
-entries when I select one the very last in my form (you know the drill where you have to go back and change everything).
- 
-Extension:
-Our tool can be extended further to fill feedback form and surveys automatically for a particular user. 
-Continuously monitoring the user patterns and using a mining algorithm like ALS to come up with most 
-probable answers can do this. I am not saying that we are going to do this as I already said we have two 
-more subjects and applications to fill. But if the time allows we can work on this to implement some small use cases.
 
-Some more ideas we pondered on:
-Static code analyzer: 
-Static code analyzer would monitor the code and suggest modifications for making the code better. 
-For example: 
-a> if(expn) 
-    stmt1 
-   else  
-    stmt2
-  can be converted to a conditional operator.
-b> a loop can be converted to a LINQ expn!
-c>It can even make the code more original for example more pythonic in case of Python code, concise in case of C code.
-Somrtimes IDEs do not do a good job in these aspects.
-Advantages: more readable code, less complexity, standard coding convention.
-There are static code analyzers already but good ones are prohibitely expensive.
+Lot of factors play role while coming up with a graduation plan. Students should keep all these factors in mind while selecting courses for the semester. But as these factors are large in number and varied in nature this becomes a cumbersome task. To understand the problem we can consider a scenario where student decides to switch his or her stream of education after completing one semester in particular stream. As there are different criteria to be fulfilled for every stream. The student who has made such a switch has to be aware of all the requirements that need to be fulfilled. In many cases this kind of switch can lead to disastrous results if ample attention is not paid earlier at the time of making the switch. As the student has already completed one semester and finished 9 credits it is possible that requirements of the new stream can not be fulfilled due to shortage of credits remaining.
 
-Auto unit test generation: 
-Provided a class this tool would generate templates for unit tests for all the methods which are visible from outside.
-Problems: 
-a> most of the legacy code will not be having unit tests, This tool can encourage people to write tests. 
-b> Test driven development is still not strictly followed in many projects. This tool can be a great help.
+We plan to come up with a tool that provide students with a more comprehensive picture of things that needs to be done in order to complete the degree requirements in the target timeframe. This can be an independent tool or a tool that builds on existing mypack portal that targets to improve user experience at the same time providing a clearer and comprehensive understanding of where the student stands with respect to his or her graduation goal. Our target audience is the currently enrolled students in the university.
 
-Desktop Search Application: 
-This application will allow the user to index files in a repository based on certain criteria and perform search on them.
-For instance, one criteria could be to index only the files with a particular file extension. 
-The problem now is most OS would index the whole repository, when the user is not going to search for most of the files in the repository.
-And this would lead to lot of time doing delta indexing when a mass file I/O operation happens.
+This tool can be seen as advising portal where a student can log in and enter the details to get a list of ‘Things to Do’ in order to graduate on the target date. We plan to provide useful graduation information that is scattered at different sites at this moment in one place. This will aid students to select the subjects more efficiently and make sure that none of the requirements are left unattended. Our tool can be extended to provide suggestions to the students while selecting subjects for a particular semester after assessing the current position where student stands and the list of subjects being offered that semester. These suggestions are made as a result of careful examination of the data provided by the user and the constraints that need to be met. For an instance, many subjects have pre-requisite that needs to be fulfilled in order to enroll in these courses the suggestions made by the tool take care of these constraints while shortlisting the subjects shown to the user. This tool can act as student advisor for the self-motivated students with clear goal in their mind.
