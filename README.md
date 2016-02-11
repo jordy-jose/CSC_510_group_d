@@ -18,11 +18,11 @@ This tool can be seen as advising portal where a student can log in and enter th
 
 QUICK LINKS:
 
-[Repo's issue page] (bit.ly/1O4Q1yx) <br />
+[Repo's issue page] (https://github.com/jordy-jose/CSC_510_group_d/issues) <br />
 
-[Repo's milestone page] (bit.ly/1muJ3g8) <br />
+[Repo's milestone page] (https://github.com/jordy-jose/CSC_510_group_d/milestones) <br />
 
-[Repo's contributor page](bit.ly/1TeD65b) <br />
+[Repo's contributor page](https://github.com/jordy-jose/CSC_510_group_d/graphs/contributors) <br />
 
 Sample telemetry output log:
 
