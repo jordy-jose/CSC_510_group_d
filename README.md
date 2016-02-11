@@ -18,11 +18,11 @@ This tool can be seen as advising portal where a student can log in and enter th
 
 QUICK LINKS:
 
-Repo's issue page: bit.ly/1O4Q1yx
+[Repo's issue page] (bit.ly/1O4Q1yx) <br />
 
-Repo's milestone page: bit.ly/1muJ3g8
+[Repo's milestone page] (bit.ly/1muJ3g8) <br />
 
-Repo's contributor page: bit.ly/1TeD65b
+[Repo's contributor page](bit.ly/1TeD65b) <br />
 
 Sample telemetry output log:
 
