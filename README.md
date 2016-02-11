@@ -17,10 +17,17 @@ This tool can be seen as advising portal where a student can log in and enter th
 
 
 QUICK LINKS:
-Repo's issue page:https://github.com/jordy-jose/CSC_510_group_d/issues
-Repo's milestone page:https://github.com/jordy-jose/CSC_510_group_d/milestones
-Repo's contributor page:
+
+Repo's issue page: bit.ly/1O4Q1yx
+
+Repo's milestone page: bit.ly/1muJ3g8
+
+Repo's contributor page: bit.ly/1TeD65b
+
 Sample telemetry output log:
-Demo slot:
+
+Demo slot timing:
+
 Code directory:
+
 Evalution plan:
