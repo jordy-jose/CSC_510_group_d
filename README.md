@@ -2,9 +2,9 @@
 Academic Project - CSC 510 - Software Engineering
 
 ##Group members:
-[Angelyn Arputha Babu John] (https://github.com/angelyn) 
-[Jordy Jose] (https://github.com/jordy-jose) 
-[Sameer Sharma] (https://github.com/ssharm) 
+[Angelyn Arputha Babu John] (https://github.com/angelyn) ,
+[Jordy Jose] (https://github.com/jordy-jose) ,
+[Sameer Sharma] (https://github.com/ssharm) ,
 [Stuti Nanda] (https://github.com/stutinanda)
 
 #Problem Statement:
