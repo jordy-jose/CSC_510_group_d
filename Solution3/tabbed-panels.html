@@ -5,6 +5,32 @@
       Graduate Student Center
     </title>
     <link rel="stylesheet" type="text/css" href="tabbed-panels.css">
+	
+	<style>
+	td, th {
+		padding: 15px;
+		border-bottom: 1px solid #ddd;
+	}
+	
+	tr td:first-child { width: 30%;}
+	tr td:first-child + td { color: grey;}
+
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	th {
+		height: 50px;
+	}
+	
+	.boxed {
+	  border: 5px solid green ;
+	  background-color: green;
+	  color: yellow;
+	} 
+	
+	</style>
   </head>
   <body>
     <div class="tabbed">
@@ -14,13 +40,30 @@
           <label for="tabbed1">Computer Science</label>
         </h1>
         <div>
-          Theory:
-          <BR>
-          Practical:
-          <BR>
-          Required:
-          <BR>
-          Remaining:
+			<table>
+			<tr>
+			<td>
+			Theory:
+			</td>
+			<td>Subject1, <font class="boxed">  Subject2 </font>, Subject3	</td>
+			</tr>
+			<tr>
+			<td>
+			Practical:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Required:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Remaining:
+			</td>
+			</tr>
+			</table>
+
         </div>
       </section>
       <input name="tabbed" id="tabbed2" type="radio">
@@ -29,28 +72,59 @@
           <label for="tabbed2">Data Science Track</label>
         </h1>
         <div>
-          Theory:
-          <BR>
-          Practical:
-          <BR>
-          Required:
-          <BR>
-          Remaining:
+			<table>
+			<tr>
+			<td>
+			Theory:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Practical:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Required:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Remaining:
+			</td>
+			</tr>
+			</table>
         </div>
       </section>
       <input name="tabbed" id="tabbed3" type="radio">
       <section>
         <h1>
-          <label for="tabbed3">Software Enggineering Track</label>
+          <label for="tabbed3">Software Engineering Track</label>
         </h1>
-        <div>
-          Theory:
-          <BR>
-          Practical:
-          <BR>
-          Required:
-          <BR>
-          Remaining:
+		<div>
+			<table>
+			<tr>
+			<td>
+			Theory:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Practical:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Required:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Remaining:
+			</td>
+			</tr>
+			</table>
+
         </div>
 		</section>
       <input name="tabbed" id="tabbed4" type="radio">
@@ -68,17 +142,48 @@
           <label for="tabbed5">Seminar Requirements</label>
         </h1>
         <div>
-          Minimum number of seminar for MS-CN: 4
-          <BR>
-          Attendend so far:
-          <BR>
-          Download attendence form: 
-          <BR>
-          Check your attendence via link:
-          <BR>
-		  Tentative Schedule:  http://research.csc.ncsu.edu/colloquia/index-seminar_list.php.
-		  <br>
-          More information:
+		
+			<table>
+			<tr>
+			<td>
+			Minimum number of seminar for MS-CN:
+			</td>
+			<td>
+			4
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Attendend so far:
+			</td>
+			<td>
+			1
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Download attendence form:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Check your attendence via link:
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Tentative Schedule:
+			</td>
+			<td>
+			http://research.csc.ncsu.edu/colloquia/index-seminar_list.php.
+			</td>
+			</tr>
+			<tr>
+			<td>
+			More information:			
+			</td>
+			</tr>
+			</table>
         </div>
       </section>
       <input name="tabbed" id="tabbed6" type="radio">
