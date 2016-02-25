@@ -9,33 +9,22 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.csc510.gradplannerlite.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="com.csc510.gradplannerlite.UpdateInfo"
+    tools:showIn="@layout/activity_update_info">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:weightSum="1">
+        android:layout_alignParentTop="true">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Information"
-            android:id="@+id/btnUpdateInfo"
-            android:layout_weight="0.44"
-            android:focusableInTouchMode="false"
-            android:onClick="onClickUpdateInfo"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button2"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.46" />
+            android:text="Personal Information"
+            android:id="@+id/piButton"
+            android:onClick="onClickpiButton"/>
     </LinearLayout>
 </RelativeLayout>
