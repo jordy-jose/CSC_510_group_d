@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Grad Planner Lite</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_update_info">UpdateInfo</string>
+    <string name="title_activity_user_info">UserInfo</string>
+    <string name="lblName">Name:</string>
+    <string name="lblDOB">DOB:</string>
+    <string name="lblEmail">Email:</string>
+    <string name="lblPhone">Phone:</string>
+    <string name="btnSubmit">Submit</string>
+    <string name="btnEdit">Edit</string>
+</resources>
