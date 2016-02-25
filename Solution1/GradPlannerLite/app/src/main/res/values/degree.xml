@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="degree_array">
+        <item>Bachelor</item>
+        <item>Master</item>
+        <item>PhD</item>
+    </string-array>
+
+    <string-array name="major_array">
+        <item>Computer Science</item>
+        <item>Computer Networks</item>
+        <item>History</item>
+    </string-array>
+
+    <string-array name="specialization_array">
+        <item>Software Engineering</item>
+        <item>Data Science</item>
+    </string-array>
+</resources>

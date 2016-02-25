@@ -9,4 +9,5 @@
     <string name="lblPhone">Phone:</string>
     <string name="btnSubmit">Submit</string>
     <string name="btnEdit">Edit</string>
+    <string name="title_activity_edu_info">EduInfo</string>
 </resources>

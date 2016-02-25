@@ -18,13 +18,23 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:weightSum="1">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Personal Information"
             android:id="@+id/piButton"
-            android:onClick="onClickpiButton"/>
+            android:onClick="onClickPiButton"
+            android:layout_weight="0.08" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Educational Information"
+            android:id="@+id/btnEduInfo"
+            android:onClick="onClickEduInfo"
+            android:layout_weight="0.08" />
     </LinearLayout>
 </RelativeLayout>

@@ -36,6 +36,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.csc510.gradplannerlite.UpdateInfo" />
         </activity>
+        <activity
+            android:name=".EduInfo"
+            android:label="@string/title_activity_edu_info"
+            android:parentActivityName=".UpdateInfo"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.csc510.gradplannerlite.UpdateInfo" />
+        </activity>
     </application>
 
 </manifest>

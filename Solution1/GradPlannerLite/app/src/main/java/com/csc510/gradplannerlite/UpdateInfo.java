@@ -28,8 +28,13 @@ public class UpdateInfo extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void onClickpiButton(View view) {
+    public void onClickPiButton(View view) {
         Intent intent = new Intent(this, UserInfo.class);
+        startActivity(intent);
+    }
+
+    public void onClickEduInfo(View view) {
+        Intent intent = new Intent(this, EduInfo.class);
         startActivity(intent);
     }
 }
