@@ -47,16 +47,29 @@ public class Misc extends AppCompatActivity {
     }
 
     private void populateRequirements() {
+        populatePendingReq();
+        populateCheckedReq();
+    }
+
+    private void populatePendingReq() {
         SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_MISCINFO, 0);
         Map<String, ?> stringMap = settings.getAll();
-        for(String key : new TreeSet<String>(stringMap.keySet())){
-            addRadioButton(key);
+        for (String key : new TreeSet<String>(stringMap.keySet())) {
+            addRadioButton(key, Color.WHITE);
         }
     }
 
-    private void addRadioButton(String text) {
+    private void populateCheckedReq() {
+        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_MISCCHK, 0);
+        Map<String, ?> stringMap = settings.getAll();
+        for (String key : new TreeSet<String>(stringMap.keySet())) {
+            addRadioButton(key, Color.GRAY);
+        }
+    }
+
+    private void addRadioButton(String text, int color) {
         RadioGroup rgp = getRadioGrp();
-        rgp.addView(getRadioButton(text), getParams());
+        rgp.addView(getRadioButton(text, color), getParams());
     }
 
     private void removeRadioButton(View radioButton) {
@@ -65,7 +78,7 @@ public class Misc extends AppCompatActivity {
     }
 
     private RadioGroup.LayoutParams getParams() {
-        if(mParams == null) {
+        if (mParams == null) {
             mParams = new RadioGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, mHeight);
             mParams.setMargins(0, 20, 0, 0);
         }
@@ -76,33 +89,47 @@ public class Misc extends AppCompatActivity {
         return (RadioGroup) findViewById(R.id.MiscRadioGrp);
     }
 
-    private RadioButton getRadioButton(String text){
+    private RadioButton getRadioButton(String text, int color) {
         RadioButton radioButton = new RadioButton(this);
         radioButton.setMinimumHeight(mHeight);
         radioButton.setBackgroundColor(Color.RED);
         radioButton.setText(text);
-        radioButton.setTextColor(Color.WHITE);
+        radioButton.setTextColor(color);
         radioButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
         return radioButton;
     }
 
     public void onClickMiscCheckBtn(View view) {
+        RadioGroup rGrp = getRadioGrp();
+        int radioButtonID = rGrp.getCheckedRadioButtonId();
+        if (radioButtonID == -1) return;
+        String text = getSelectedText(rGrp, radioButtonID);
+        if (isReqPresent(text)) {
+            removeRequirement(text);
+            addRequirementChk(text);
+            getRadioButton(rGrp, radioButtonID).setTextColor(Color.GRAY);
+        }
     }
 
     public void onClickMiscEditBtn(View view) {
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
-        if(radioButtonID == -1) return;
+        if (radioButtonID == -1) return;
         String text = getSelectedText(rGrp, radioButtonID);
+        if (isChkPresent(text)) return;
         showMsgEdit(text, getRadioButton(rGrp, radioButtonID));
     }
 
     public void onClickMiscRemBtn(View view) {
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
-        if(radioButtonID == -1) return;
+        if (radioButtonID == -1) return;
         String key = getSelectedText(rGrp, radioButtonID);
-        removeRequirement(key);
+        if (isReqPresent(key)) {
+            removeRequirement(key);
+        } else if (isChkPresent(key)) {
+            removeRequirementChk(key);
+        }
         removeRadioButton(getRadioBtnView(rGrp, radioButtonID));
     }
 
@@ -110,7 +137,7 @@ public class Misc extends AppCompatActivity {
         showMsgAdd();
     }
 
-    private String getSelectedText(RadioGroup rGrp, int radioBtnId){
+    private String getSelectedText(RadioGroup rGrp, int radioBtnId) {
         RadioButton rBtn = getRadioButton(rGrp, radioBtnId);
         return rBtn.getText().toString();
     }
@@ -118,15 +145,15 @@ public class Misc extends AppCompatActivity {
     private RadioButton getRadioButton(RadioGroup rGrp, int radioBtnId) {
         View radioButton = getRadioBtnView(rGrp, radioBtnId);
         int idx = rGrp.indexOfChild(radioButton);
-        return (RadioButton)rGrp.getChildAt(idx);
+        return (RadioButton) rGrp.getChildAt(idx);
     }
 
-    private View getRadioBtnView(RadioGroup rGrp, int radioBtnId){
+    private View getRadioBtnView(RadioGroup rGrp, int radioBtnId) {
         return rGrp.findViewById(radioBtnId);
     }
 
     private void showMsg(String msg) {
-        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
         dlgAlert.setMessage(msg);
         dlgAlert.setTitle(R.string.app_name);
         dlgAlert.setPositiveButton("Ok",
@@ -146,6 +173,13 @@ public class Misc extends AppCompatActivity {
         editor.commit();
     }
 
+    private void addRequirementChk(String text) {
+        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_MISCCHK, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(text, text);
+        editor.commit();
+    }
+
     private void removeRequirement(String key) {
         SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_MISCINFO, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -153,8 +187,23 @@ public class Misc extends AppCompatActivity {
         editor.commit();
     }
 
+    private void removeRequirementChk(String key) {
+        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_MISCCHK, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove(key);
+        editor.commit();
+    }
+
     private boolean isReqPresent(String mText) {
         SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_MISCINFO, 0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+            return !settings.getString(mText, "").isEmpty();
+        }
+        return false;
+    }
+
+    private boolean isChkPresent(String mText) {
+        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_MISCCHK, 0);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
             return !settings.getString(mText, "").isEmpty();
         }
@@ -200,10 +249,10 @@ public class Misc extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String text = input.getText().toString();
-                if(!isReqPresent(text)){
+                if (!isReqPresent(text) && !isChkPresent(text)) {
                     addRequirement(text);
-                    addRadioButton(text);
-                }else{
+                    addRadioButton(text, Color.WHITE);
+                } else {
                     showMsg("Requirement already exists");
                 }
             }
