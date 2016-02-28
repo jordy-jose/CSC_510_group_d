@@ -72,6 +72,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.csc510.gradplannerlite.MainActivity" />
         </activity>
+        <activity
+            android:name=".Status"
+            android:label="@string/title_activity_status"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.csc510.gradplannerlite.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

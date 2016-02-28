@@ -36,4 +36,8 @@
     <string name="btnCoursesRem">-</string>
     <string name="btnCoursesEdit">edit</string>
     <string name="btnCoursesCheck">check</string>
+    <string name="title_activity_status">Status</string>
+    <string name="lblCourPend">Courses pending:</string>
+    <string name="lblSemPend">Seminars pending:</string>
+    <string name="lblOtherPend">Other:</string>
 </resources>
