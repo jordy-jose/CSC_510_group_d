@@ -5,8 +5,6 @@
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name='com.google.gwt.user.User'/>
 
-    <stylesheet src="/css/demo.css"/>
-
     <!-- Inherit the default GWT style sheet.  You can change       -->
     <!-- the theme of your GWT application by uncommenting          -->
     <!-- any one of the following lines.                            -->
@@ -15,7 +13,6 @@
     <!-- <inherits name="com.google.gwt.user.theme.dark.Dark"/>     -->
 
     <inherits name="com.google.gwt.logging.Logging"/>
-    <!--<set-property name="gwt.logging.logLevel" value="INFO"/>          # To change the  default logLevel-->
 
     <!-- Specify the app entry point class.                   -->
     <entry-point class='com.myTrackerApplication.client.MyTrackerApplication'/>
@@ -25,9 +22,13 @@
     <servlet path='/MyTrackerApplicationService'
              class='com.myTrackerApplication.server.MyTrackerApplicationServiceImpl'/>
     <servlet path='/MyLoginHelperService'
-             class='com.myTrackerApplication.UserAuthentication.LoginHelper'/>
+             class='com.myTrackerApplication.UserAuthentication.LoginHelperService'/>
+    <servlet path='/MyDBHelperService'
+             class='com.myTrackerApplication.UserAuthentication.DBHelperService'/>
 
     <set-property name="gwt.logging.logLevel" value="SEVERE"/>
     <set-property name="gwt.logging.enabled" value="TRUE"/>
+
+    <stylesheet src="/css/MyTrackerApplication.css"/>
 
 </module>

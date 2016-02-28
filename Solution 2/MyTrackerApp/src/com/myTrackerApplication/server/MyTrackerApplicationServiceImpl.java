@@ -1,11 +1,11 @@
 package com.myTrackerApplication.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.myTrackerApplication.client.MyTrackerApplicationService;
+import com.myTrackerApplication.client.Interfaces.ITrackerApplicationService;
 
 import java.util.HashMap;
 
-public class MyTrackerApplicationServiceImpl extends RemoteServiceServlet implements MyTrackerApplicationService {
+public class MyTrackerApplicationServiceImpl extends RemoteServiceServlet implements ITrackerApplicationService {
     // Implementation of sample interface method
     public String getMessage(String msg) {
         return "Client said: \"" + msg + "\"<br>Server answered: \"Hi!\"";
@@ -16,7 +16,7 @@ public class MyTrackerApplicationServiceImpl extends RemoteServiceServlet implem
 
         infoMap.put("Name", id);
         return infoMap;
-    }
 
+    }
 
 }
