@@ -19,15 +19,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UpdateInfo"
-            android:label="@string/title_activity_update_info"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.csc510.gradplannerlite.MainActivity" />
-        </activity>
-        <activity
             android:name=".MyAcc"
             android:label="@string/title_activity_my_acc_info"
             android:parentActivityName=".MainActivity"
@@ -39,6 +30,15 @@
         <activity
             android:name=".Degree"
             android:label="@string/title_activity_degree_info"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.csc510.gradplannerlite.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Seminar"
+            android:label="@string/title_activity_seminar"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

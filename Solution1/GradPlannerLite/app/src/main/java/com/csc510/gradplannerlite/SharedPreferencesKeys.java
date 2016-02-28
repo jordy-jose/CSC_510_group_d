@@ -16,4 +16,9 @@ public class SharedPreferencesKeys {
     public static final String EduDegree = "###EduDegree";
     public static final String EduMajor = "###EduMajor";
     public static final String EduSpec = "###EduSpec";
+
+
+    public static final String PREFS_SEMINFO = "SEM_INFO";
+    public static final String SemNum = "###SemNum";
+    public static final String SemAttended = "###SemAttended";
 }

@@ -7,16 +7,22 @@
     <string name="lblDOB">DOB:</string>
     <string name="lblEmail">Email:</string>
     <string name="lblPhone">Phone:</string>
-    <string name="lblDegree">Degree:</string>
-    <string name="lblMajor">Major:</string>
-    <string name="lblSpec">Specialization:</string>
     <string name="btnSubmit">Submit</string>
     <string name="btnEdit">Edit</string>
     <string name="title_activity_degree_info">Degree</string>
+    <string name="lblDegree">Degree:</string>
+    <string name="lblMajor">Major:</string>
+    <string name="lblSpec">Specialization:</string>
     <string name="myAcc">my acc</string>
     <string name="degree">degree</string>
     <string name="semester">semester</string>
     <string name="seminar">seminar</string>
     <string name="misc">miscellaneous</string>
     <string name="status">status</string>
+    <string name="title_activity_seminar">seminar</string>
+    <string name="semAdd">Add</string>
+    <string name="semRem">Remove</string>
+    <string name="semView">View</string>
+    <string name="msgSemAdded">Seminar added</string>
+    <string name="msgSemRemoved">Seminar removed</string>
 </resources>

@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,4 +60,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Degree.class);
         startActivity(intent);
     }
+
+    public void onClickSeminar(View view) {
+        Intent intent = new Intent(this, Seminar.class);
+        startActivity(intent);
+    }
+
 }
