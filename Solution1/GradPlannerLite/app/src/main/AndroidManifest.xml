@@ -29,7 +29,7 @@
         </activity>
         <activity
             android:name=".MyAcc"
-            android:label="@string/title_activity_user_info"
+            android:label="@string/title_activity_my_acc_info"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -37,13 +37,13 @@
                 android:value="com.csc510.gradplannerlite.MainActivity" />
         </activity>
         <activity
-            android:name=".EduInfo"
-            android:label="@string/title_activity_edu_info"
-            android:parentActivityName=".UpdateInfo"
+            android:name=".Degree"
+            android:label="@string/title_activity_degree_info"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.csc510.gradplannerlite.UpdateInfo" />
+                android:value="com.csc510.gradplannerlite.MainActivity" />
         </activity>
     </application>
 

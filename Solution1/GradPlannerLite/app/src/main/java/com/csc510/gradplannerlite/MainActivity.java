@@ -56,4 +56,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyAcc.class);
         startActivity(intent);
     }
+
+    public void onClickDegree(View view) {
+        Intent intent = new Intent(this, Degree.class);
+        startActivity(intent);
+    }
 }

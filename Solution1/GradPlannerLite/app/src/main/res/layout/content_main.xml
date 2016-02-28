@@ -44,7 +44,8 @@
             android:layout_weight="1"
             android:background="#ff0000"
             android:textSize="@dimen/abc_text_size_display_1_material"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:onClick="onClickDegree"/>
 
         <Button
             android:layout_width="match_parent"

@@ -34,7 +34,7 @@ public class UpdateInfo extends AppCompatActivity {
     }
 
     public void onClickEduInfo(View view) {
-        Intent intent = new Intent(this, EduInfo.class);
+        Intent intent = new Intent(this, Degree.class);
         startActivity(intent);
     }
 }
