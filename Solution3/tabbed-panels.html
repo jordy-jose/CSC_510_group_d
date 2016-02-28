@@ -10,10 +10,11 @@
 	td, th {
 		padding: 15px;
 		border-bottom: 1px solid #ddd;
+		line-height: 225%;
 	}
 	
-	tr td:first-child { width: 30%;}
-	tr td:first-child + td { color: grey;}
+	tr td:first-child { width: 20%;}
+	tr td:first-child + td { color: grey; width: 70%; word-wrap: break-word;}
 
 	table {
 		border-collapse: collapse;
@@ -24,15 +25,63 @@
 		height: 50px;
 	}
 	
-	.boxed {
+	.boxed_taken {
 	  border: 5px solid green ;
 	  background-color: green;
 	  color: yellow;
+	  font: bold;
+	} 
+	
+	.boxed_avail {
+	  border: 5px solid blue ;
+	  background-color: blue;
+	  color: white;
+	  font: bold;
+	} 
+	
+	.boxed_unavail {
+	  border: 5px solid maroon ;
+	  background-color: maroon;
+	  color: white;
+	  font: bold;
 	} 
 	
 	</style>
   </head>
   <body>
+	<table class="red_spacer" summary="Portal Header" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	<td rowspan="2"><a href="https://portalsp.acs.ncsu.edu/psp/EP91PRD/EMPLOYEE/EMPL/h/?tab=DEFAULT" target="_blank"><img src="NC_MYPACK_HEADER_91A_1.gif" style="display:block;" alt="MyPack Image" border="0"></a></td>
+	<!--
+	<td border="0" cellspacing="0" cellpadding="0" style="padding-top:1px; color:#ffffff; padding-bottom:10px; color:#cc0000;" valign="Top">
+   
+   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+   <tbody><tr nowrap="" class="SIGN_OUT2">
+	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://www.ncsu.edu/directory/" target="_blank&quot;">FIND PEOPLE</a></nobr></td>
+	<td align="center">|</td>
+	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://www.lib.ncsu.edu/" target="_blank&quot;">LIBRARIES</a></nobr></td>
+	<td align="center">|</td>
+	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://news.ncsu.edu/" target="_blank&quot;">NEWS</a></nobr></td>
+	<td align="center">|</td>
+	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://calendar.activedatax.com/ncstate/" target="_blank&quot;">CALENDAR</a></nobr></td>
+	<td align="center">|</td>
+	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://www.ncsu.edu/campus_map/" target="_blank&quot;">CAMPUS MAPS</a></nobr></td>
+	<td align="center">|</td>
+	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="https://portalsp.acs.ncsu.edu/psp/EP91PRD_1/EMPLOYEE/EMPL/h/?tab=DEFAULT">MYPACK HOME</a></nobr></td>
+	<td align="center">|</td>
+		<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="https://portalsp.acs.ncsu.edu/psp/EP91PRD_1/EMPLOYEE/EMPL/e/?url=%3fcmd%3dlogout">SIGN OUT</a></nobr></td>
+		</tr>
+		</tbody></table>
+	</td>-->
+</tr>
+
+</tbody></table>
+</form>
+</td>
+</tr>
+</tbody></table>
+
+
     <div class="tabbed">
       <input name="tabbed" id="tabbed1" type="radio" checked>
       <section>
@@ -45,21 +94,165 @@
 			<td>
 			Theory:
 			</td>
-			<td>Subject1, <font class="boxed">  Subject2 </font>, Subject3	</td>
-			</tr>
-			<tr>
 			<td>
-			Practical:
+			<font class="boxed_avail"> CSC 503 (Computational Applied Logic)</font>  <font class="boxed_avail">  CSC 505 (Algorithms)</font> CSC 512 (Compiler Construction)  <font class="boxed_avail"> CSC 565 (Graph Theory)</font> CSC 579 (Performance Evaluation) <font class="boxed_avail"> CSC 580 (Numerical Analysis)</font>  CSC 707 (Theory of Computation)
+			</td>
+			<td>
+			Max Required: 2
+			Taken: 0
+			Remaining: 1
 			</td>
 			</tr>
 			<tr>
 			<td>
-			Required:
+			Systems:
+			</td>
+			<td>
+			<font class="boxed_taken"> CSC 501 (Operating Systems)</font>  <font class="boxed_unavail"> CSC 506 (Parallel Architectures)</font>  <font class="boxed_taken">  CSC 510 (Software Engineering)</font>  <font class="boxed_unavail"> CSC 520 (Artificial Intelligence)</font>  <font class="boxed_unavail"> CSC 540 (Database Systems)</font>  <font class="boxed_unavail"> CSC 561 (Graphics)</font>   <font class="boxed_taken">CSC 570 (Networks) </font>
+			</td>
+			<td>
+			Max Required: 2
+			Taken: 3
+			Remaining: 0
 			</td>
 			</tr>
 			<tr>
 			<td>
-			Remaining:
+			Advance Alternative Core Courses:
+			</td>
+			<td>
+			<font class="boxed_unavail"> CSC720 (Artificial Intelligence II)</font>   <font class="boxed_unavail">CSC573 (Internet Protocols)
+			</td>
+			<td></td>
+			</font>
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Summary:
+			</td>
+			<td colspan="2">
+			<table >
+			
+			<tr>
+			<td style="width:55%">
+			
+			</td>
+			<td style="width:15%">
+			<b>Credits Required</b>
+			</td>
+			<td style="width:15%">
+			<b>Credits Taken</b>
+			</td>
+			<td style="width:15%">
+			<b>Credits Remaining</b>
+			</td>
+			</tr>
+			
+			
+			<tr>
+			<td style="width:55%">
+			<b>Core Courses</b></br>
+			CSC 501 (Operating Systems), CSC 510 (Software Engineering)
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			9
+			</td>
+			<td style="width:15%">
+			<b></b></br>
+			6
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			3
+			</td>
+			</tr>
+			
+			<tr>
+			<td style="width:55%">
+			<b>Computer Science graduate electives</b></br>
+			CSC 522 (Automated Learning & Data Analysis), CSC 563 (Visual Interfaces for Mobile Development), CSC 570 (Networks)
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			12
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			9
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			3
+			</td>
+			</tr>
+			
+			<tr>
+			<td style="width:55%">
+			<b>Orientation Courses</b></br>
+			CSC 600 (Orientation Courses)
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			1
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			1
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			0
+			</td>
+			</tr>
+			
+			<tr>
+			<td style="width:55%">
+			<b>Computer Science graduate electives, or other "restricted" electives</b></br>
+			ECE 542 (Neural Networks)
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			9
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			3
+			</td>
+			<td style="width:15%">
+			<b> </b></br>
+			6
+			</td>
+			</tr>
+			
+			
+			
+			<tr>
+			<td style="width:55%">
+			<b>Total</b></br>
+			</td>
+			<td style="width:15%">
+			<b>31</b></br>
+			</td>
+			<td style="width:15%">
+			<b>19</b></br>
+			</td>
+			<td style="width:15%">
+			<b>12</b></br>
+			</td>
+			</tr>
+			
+			
+			</table>
+			</td>
+			</tr>
+			<tr >
+			<td colspan="2">
+			<font class="boxed_taken">&nbsp;&nbsp; </font> &nbsp; Core Course(s) already taken </br>
+			<font class="boxed_avail">&nbsp;&nbsp;  </font> &nbsp; Core Course(s) required and offered in current semester  </br>
+			<font class="boxed_unavail"> &nbsp;&nbsp; </font> &nbsp; Core Course(s) not taken and cannot be considered core but elective, these may or may not be offered in current semester </br>
+			&nbsp;<font style="color: grey;"><b>S</b></font>&nbsp;&nbsp;&nbsp; Core Course(s) required but not offered in current semester 
 			</td>
 			</tr>
 			</table>
@@ -75,7 +268,7 @@
 			<table>
 			<tr>
 			<td>
-			Theory:
+			Theory: Data Science core courses
 			</td>
 			</tr>
 			<tr>
