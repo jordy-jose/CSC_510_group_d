@@ -1,13 +1,19 @@
 <resources>
     <string name="app_name">Grad Planner Lite</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_update_info">UpdateInfo</string>
-    <string name="title_activity_user_info">UserInfo</string>
+    <string name="title_activity_update_info">Update Information</string>
+    <string name="title_activity_user_info">Personal Information</string>
     <string name="lblName">Name:</string>
     <string name="lblDOB">DOB:</string>
     <string name="lblEmail">Email:</string>
     <string name="lblPhone">Phone:</string>
     <string name="btnSubmit">Submit</string>
-    <string name="btnEdit">Edit</string>
-    <string name="title_activity_edu_info">EduInfo</string>
+    <string name="btnSandC">Save and Continue</string>
+    <string name="title_activity_edu_info">Educational Information</string>
+    <string name="myAcc">my acc</string>
+    <string name="degree">degree</string>
+    <string name="semester">semester</string>
+    <string name="seminar">seminar</string>
+    <string name="misc">miscellanious</string>
+    <string name="status">status</string>
 </resources>

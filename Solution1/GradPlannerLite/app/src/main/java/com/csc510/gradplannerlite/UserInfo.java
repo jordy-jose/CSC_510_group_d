@@ -17,7 +17,7 @@ public class UserInfo extends AppCompatActivity {
     private EditText etDob;
     private EditText etEmail;
     private EditText etPhone;
-    private Button btnSubmit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,22 +37,10 @@ public class UserInfo extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         InitializeControls();
         PopulateEditTexts();
-        enableControls();
-    }
-
-    private void enableControls() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-            if(!getName().isEmpty() ||
-                    !getDOB().isEmpty() ||
-                    !getEmail().isEmpty() ||
-                    !getPhone().isEmpty()){
-                SetEnabledForControls(false);
-            }
-        }
     }
 
     private void PopulateEditTexts() {
-        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_NAME, 0);
+        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_USERINFO, 0);
         etName.setText(settings.getString(SharedPreferencesKeys.UserName, ""));
         etDob.setText(settings.getString(SharedPreferencesKeys.UserDOB, ""));
         etEmail.setText(settings.getString(SharedPreferencesKeys.UserEmail, ""));
@@ -64,7 +52,6 @@ public class UserInfo extends AppCompatActivity {
         etDob = (EditText)findViewById(R.id.txtDOB);
         etEmail = (EditText)findViewById(R.id.txtEmail);
         etPhone = (EditText)findViewById(R.id.txtPhone);
-        btnSubmit = (Button)findViewById(R.id.btnSubmit);
     }
 
     public void onClickSubmitBtn(View view) {
@@ -72,20 +59,15 @@ public class UserInfo extends AppCompatActivity {
     }
 
     private void persistUserInfo() {
-        String name = getName();
-        String dob = getDOB();
-        String email = getEmail();
-        String phone = getPhone();
-
-        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_NAME, 0);
+        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_USERINFO, 0);
         SharedPreferences.Editor editor = settings.edit();
 
         editor.clear();
 
-        editor.putString(SharedPreferencesKeys.UserName, name);
-        editor.putString(SharedPreferencesKeys.UserDOB, dob);
-        editor.putString(SharedPreferencesKeys.UserEmail, email);
-        editor.putString(SharedPreferencesKeys.UserPhone, phone);
+        editor.putString(SharedPreferencesKeys.UserName, getName());
+        editor.putString(SharedPreferencesKeys.UserDOB, getDOB());
+        editor.putString(SharedPreferencesKeys.UserEmail, getEmail());
+        editor.putString(SharedPreferencesKeys.UserPhone, getPhone());
 
         editor.commit();
     }
@@ -101,16 +83,5 @@ public class UserInfo extends AppCompatActivity {
     }
     private String getPhone(){
         return etPhone.getText().toString();
-    }
-    public void onClickEditBtn(View view) {
-        SetEnabledForControls(true);
-    }
-
-    private void SetEnabledForControls(boolean enable) {
-        etName.setEnabled(enable);
-        etDob.setEnabled(enable);
-        etEmail.setEnabled(enable);
-        etPhone.setEnabled(enable);
-        btnSubmit.setEnabled(enable);
     }
 }

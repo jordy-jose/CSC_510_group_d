@@ -105,13 +105,5 @@
             android:ems="10"
             android:text="@string/btnSubmit"
             android:onClick="onClickSubmitBtn"/>
-
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:text="@string/btnEdit"
-            android:onClick="onClickEditBtn"/>
     </LinearLayout>
 </LinearLayout>

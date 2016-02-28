@@ -1,5 +1,6 @@
 package com.csc510.gradplannerlite;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -61,7 +62,19 @@ public class EduInfo extends AppCompatActivity {
         sSpecialization.setAdapter(adapter);
     }
 
-    public void onClickEduNextBtn(View view) {
-        
+    public void onClickEduSandCBtn(View view) {
+        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_EDUINFO, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.clear();
+
+        editor.putString(SharedPreferencesKeys.EduDegree, getDegreeVal());
+        editor.putString(SharedPreferencesKeys.EduMajor, getMajorVal());
+        editor.putString(SharedPreferencesKeys.EduSpec, getSpecVal());
+
+        editor.commit();
     }
+
+    private String getDegreeVal(){ return sDegree.getSelectedItem().toString();}
+    private String getMajorVal(){ return sDegree.getSelectedItem().toString();}
+    private String getSpecVal(){ return sDegree.getSelectedItem().toString();}
 }
