@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickUpdateInfo(View view) {
-        Intent intent = new Intent(this, UpdateInfo.class);
+    public void onClickMyAcc(View view) {
+        Intent intent = new Intent(this, MyAcc.class);
         startActivity(intent);
     }
 }

@@ -9,101 +9,142 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:weightSum="6"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.csc510.gradplannerlite.UserInfo"
-    tools:showIn="@layout/activity_user_info">
+    tools:context=".MyAcc"
+    tools:showIn="@layout/activity_my_acc">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:background="#ff0000">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="@string/lblName" />
+            android:text="@string/lblName"
+            android:textSize="28sp"
+            android:textColor="#ffffff" />
 
         <EditText
             android:id="@+id/txtName"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="71dp"
             android:layout_weight="0.75"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="#ffffff"
+            android:textSize="28sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_marginTop = "20dp"
+        android:orientation="horizontal"
+        android:background="#ff0000">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="@string/lblDOB" />
+            android:text="@string/lblDOB"
+            android:textSize="28sp"
+            android:textColor="#ffffff" />
 
         <EditText
             android:id="@+id/txtDOB"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="71dp"
             android:layout_weight="0.75"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:textColor="#ffffff"
+            android:textSize="28sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_marginTop = "20dp"
+        android:orientation="horizontal"
+        android:background="#ff0000">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="@string/lblEmail" />
+            android:text="@string/lblEmail"
+            android:textSize="28sp"
+            android:textColor="#ffffff" />
 
         <EditText
             android:id="@+id/txtEmail"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="69dp"
             android:layout_weight="0.75"
             android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="#ffffff"
+            android:textSize="28sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_marginTop = "20dp"
+        android:orientation="horizontal"
+        android:background="#ff0000">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="@string/lblPhone" />
+            android:text="@string/lblPhone"
+            android:textSize="28sp"
+            android:textColor="#ffffff" />
 
         <EditText
             android:id="@+id/txtPhone"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="71dp"
             android:layout_weight="0.75"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:textColor="#ffffff"
+            android:textSize="28sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop = "20dp"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="71dp"
+            android:layout_weight="0.5"
             android:ems="10"
             android:text="@string/btnSubmit"
-            android:onClick="onClickSubmitBtn"/>
+            android:onClick="onClickSubmitBtn"
+            android:background="#ff0000"
+            android:textSize="28sp"
+            android:textColor="#ffffff" />
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="71dp"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:text="@string/btnEdit"
+            android:onClick="onClickEditBtn"
+            android:background="#ff0000"
+            android:textSize="28sp"
+            android:textColor="#ffffff" />
     </LinearLayout>
 </LinearLayout>

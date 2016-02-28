@@ -1,6 +1,7 @@
 package com.csc510.gradplannerlite;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,17 +12,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class UserInfo extends AppCompatActivity {
+public class MyAcc extends AppCompatActivity {
 
     private EditText etName;
     private EditText etDob;
     private EditText etEmail;
     private EditText etPhone;
+    private Button btnSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_info);
+        setContentView(R.layout.activity_my_acc);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -37,6 +39,18 @@ public class UserInfo extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         InitializeControls();
         PopulateEditTexts();
+        enableRequiredControls();
+    }
+
+    private void enableRequiredControls() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+            if(!getName().isEmpty() ||
+                    !getDOB().isEmpty() ||
+                    !getEmail().isEmpty() ||
+                    !getPhone().isEmpty()){
+                setEnabledForControls(false);
+            }
+        }
     }
 
     private void PopulateEditTexts() {
@@ -52,10 +66,16 @@ public class UserInfo extends AppCompatActivity {
         etDob = (EditText)findViewById(R.id.txtDOB);
         etEmail = (EditText)findViewById(R.id.txtEmail);
         etPhone = (EditText)findViewById(R.id.txtPhone);
+        btnSubmit = (Button)findViewById(R.id.btnSubmit);
     }
 
     public void onClickSubmitBtn(View view) {
         persistUserInfo();
+        setEnabledForControls(false);
+    }
+
+    public void onClickEditBtn(View view) {
+        setEnabledForControls(true);
     }
 
     private void persistUserInfo() {
@@ -78,10 +98,31 @@ public class UserInfo extends AppCompatActivity {
     private String getDOB(){
         return etDob.getText().toString();
     }
-    private String getEmail(){
-        return etEmail.getText().toString();
-    }
+    private String getEmail(){ return etEmail.getText().toString(); }
     private String getPhone(){
         return etPhone.getText().toString();
+    }
+
+    private void setEnabledForControls(boolean enabled){
+        etName.setEnabled(enabled);
+        etDob.setEnabled(enabled);
+        etEmail.setEnabled(enabled);
+        etPhone.setEnabled(enabled);
+        btnSubmit.setEnabled(enabled);
+        setBackgroundColor(enabled);
+    }
+
+    private void setBackgroundColor(boolean enabled){
+        int color;
+        if(enabled){
+            color = Color.WHITE;
+        }else{
+            color = Color.GRAY;
+        }
+        etName.setTextColor(color);
+        etDob.setTextColor(color);
+        etEmail.setTextColor(color);
+        etPhone.setTextColor(color);
+        btnSubmit.setTextColor(color);
     }
 }

@@ -29,7 +29,7 @@ public class UpdateInfo extends AppCompatActivity {
     }
 
     public void onClickPiButton(View view) {
-        Intent intent = new Intent(this, UserInfo.class);
+        Intent intent = new Intent(this, MyAcc.class);
         startActivity(intent);
     }
 
