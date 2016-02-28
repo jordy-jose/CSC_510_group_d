@@ -19,11 +19,16 @@
     <string name="seminar">seminar</string>
     <string name="misc">miscellaneous</string>
     <string name="status">status</string>
-    <string name="title_activity_seminar">seminar</string>
+    <string name="title_activity_seminar">Seminar</string>
     <string name="semAdd">Add</string>
     <string name="semRem">Remove</string>
     <string name="semView">View</string>
     <string name="msgSemAdded">Seminar added</string>
     <string name="msgSemRemoved">Seminar removed</string>
-    <string name="title_activity_view_seminar">ViewSeminar</string>
+    <string name="title_activity_view_seminar">Seminars</string>
+    <string name="title_activity_misc">Miscellaneous</string>
+    <string name="btnMiscAdd">+</string>
+    <string name="btnMiscRem">-</string>
+    <string name="btnMiscEdit">edit</string>
+    <string name="btnMiscCheck">check</string>
 </resources>

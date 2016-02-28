@@ -21,4 +21,6 @@ public class SharedPreferencesKeys {
     public static final String PREFS_SEMINFO = "SEM_INFO";
     public static final String SemNum = "###SemNum";
     public static final String SemAttended = "###SemAttended";
+
+    public static final String PREFS_MISCINFO = "MISC_INFO";
 }

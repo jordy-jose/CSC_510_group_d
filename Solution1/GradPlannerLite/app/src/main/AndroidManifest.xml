@@ -54,6 +54,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.csc510.gradplannerlite.Seminar" />
         </activity>
+        <activity
+            android:name=".Misc"
+            android:label="@string/title_activity_misc"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.csc510.gradplannerlite.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
