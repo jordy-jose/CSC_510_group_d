@@ -52,12 +52,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop = "20dp"
             android:textAllCaps="false"
-            android:text="@string/semester"
+            android:text="@string/courses"
             android:id="@+id/button3"
             android:layout_weight="1"
             android:background="#ff0000"
             android:textSize="@dimen/abc_text_size_display_1_material"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:onClick="onClickCourses"/>
 
         <Button
             android:layout_width="match_parent"

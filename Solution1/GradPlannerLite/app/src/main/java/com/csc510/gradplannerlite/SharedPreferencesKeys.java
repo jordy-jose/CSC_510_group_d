@@ -22,6 +22,9 @@ public class SharedPreferencesKeys {
     public static final String SemNum = "###SemNum";
     public static final String SemAttended = "###SemAttended";
 
-    public static final String PREFS_MISCINFO = "MISC_INFO";
-    public static final String PREFS_MISCCHK = "MISC_CHK";
+    public static final String PREFS_MISCINFO = "###MISC_INFO";
+    public static final String PREFS_MISCCHK = "###MISC_CHK";
+
+    public static final String PREFS_COURSESENR = "###COURSESENR";
+    public static final String PREFS_COURSESCHK = "###COURSESCHK";
 }

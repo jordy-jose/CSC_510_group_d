@@ -70,4 +70,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Misc.class);
         startActivity(intent);
     }
+
+    public void onClickCourses(View view) {
+        Intent intent = new Intent(this, Courses.class);
+        startActivity(intent);
+    }
 }

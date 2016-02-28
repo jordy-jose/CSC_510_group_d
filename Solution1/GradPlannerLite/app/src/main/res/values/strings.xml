@@ -15,7 +15,7 @@
     <string name="lblSpec">Specialization:</string>
     <string name="myAcc">my acc</string>
     <string name="degree">degree</string>
-    <string name="semester">semester</string>
+    <string name="courses">courses</string>
     <string name="seminar">seminar</string>
     <string name="misc">miscellaneous</string>
     <string name="status">status</string>
@@ -31,4 +31,9 @@
     <string name="btnMiscRem">-</string>
     <string name="btnMiscEdit">edit</string>
     <string name="btnMiscCheck">check</string>
+    <string name="title_activity_courses">Courses</string>
+    <string name="btnCoursesAdd">+</string>
+    <string name="btnCoursesRem">-</string>
+    <string name="btnCoursesEdit">edit</string>
+    <string name="btnCoursesCheck">check</string>
 </resources>
