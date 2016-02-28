@@ -25,4 +25,5 @@
     <string name="semView">View</string>
     <string name="msgSemAdded">Seminar added</string>
     <string name="msgSemRemoved">Seminar removed</string>
+    <string name="title_activity_view_seminar">ViewSeminar</string>
 </resources>

@@ -2,6 +2,7 @@ package com.csc510.gradplannerlite;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,7 +15,6 @@ import android.widget.Button;
 
 public class Seminar extends AppCompatActivity {
 
-    private Button btnAdd;
     private Button btnRemove;
     private Button btnView;
 
@@ -66,7 +66,6 @@ public class Seminar extends AppCompatActivity {
     }
 
     private void initializeControls() {
-        btnAdd = (Button)findViewById(R.id.semAdd);
         btnRemove = (Button)findViewById(R.id.semRem);
         btnView = (Button)findViewById(R.id.semView);
     }
@@ -82,6 +81,8 @@ public class Seminar extends AppCompatActivity {
     }
 
     public void onClickSemView(View view) {
+        Intent intent = new Intent(this, ViewSeminar.class);
+        startActivity(intent);
     }
 
     public void onClickSemRem(View view) {
@@ -93,6 +94,7 @@ public class Seminar extends AppCompatActivity {
         setSemCount(count - 1);
         //last seminar removed
         if(getSeminarCount() == 0){
+            setSemAttendedCount(0);
             setEnabled(false);
         }
         showMessageRem();
