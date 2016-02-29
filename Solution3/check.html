@@ -1,41 +1,20 @@
-<!DOCTYPE html>
 <html>
-  <head>
-  
-  
-  <script>
+<head>
 
-var coursesTaken = [];
+<script>
+
+var checkedValue = [];
 var values = [];
-var courses = [];
-var coursesCurrentSemesterAvail = [];
-var theoryCourses = ["CSC 503 - Computational Applied Logic", "CSC 505 - Design and Analysis Of Algorithms", "CSC 512 - Compiler Construction", "CSC 565 - Graph Theory", "CSC 579 - Introduction to Computer Performance Modeling", "CSC 580 - Numerical Analysis I", "CSC 707 - Automata, Languages and Computability Theory"];
-var systemCourses = ["CSC 501 - Operating Systems Principles", "CSC 506 - Architecture Of Parallel Computers", "CSC 510 - Software Engineering", "CSC 520 - Artificial Intelligence I", "CSC 540 - Database Management concepts and Systems", "CSC 561 - Principles of Computer Graphics", "CSC 570 - Computer Networks"];
-var theoryCount = 0;
-var systemCount = 0;
-var theoryColoring = "";
-var systemColoring = "";
-var theoryCoursesTaken = [];
-var systemCoursesTaken = [];
-var coreCoursesDisplay = "";
-var theoryCoursesDisplayCount = 0;
-var systemCoursesDisplayCount = 0;
-var orientationCourseDisplay = "";
-var orientationCourseDisplayCount = 0;
-var electiveCoursesDisplay = "";
-var electiveCoursesDisplayCount = 0;
-var otherElectiveCoursesDisplay = "";
-var otherElectiveCoursesDisplayCount = 0;
 
 function selectedCourses(){
-	coursesTaken = []; 
+	checkedValue = []; 
 	var inputElements = document.getElementsByClassName('messageCheckbox');
 	for(var i=0; inputElements[i]; i++){
 		  if(inputElements[i].checked){
-				coursesTaken.push(inputElements[i].value);
+				checkedValue.push(inputElements[i].value);
 		  }
 	}
-	//alert(coursesTaken);
+	alert(checkedValue);
 	selectedGrades();
 }
 
@@ -50,7 +29,7 @@ function selectedGrades(){
 			}
 		}
 	}
-	//alert(values);
+	alert(values);
 	calculateGPA();
 }
 
@@ -66,306 +45,32 @@ function calculateGPA(){
 	//alert(total/count)
 	document.getElementById('div1').style.display= "none";
 	document.getElementById('div2').style.display= "inline-block";
-	listOfCourses();
 	coursesOffered();
 }
 
-function listOfCourses(){
-	courses = []; 
-	var inputElements = document.getElementsByClassName('messageCheckbox');
-	for(var i=0; inputElements[i]; i++){
-		  courses.push(inputElements[i].value);
-	}
-}
-
 function coursesOffered(){
-	coursesCurrentSemesterAvail = [];
+	offered = [];
 	var inputElements = document.getElementsByClassName("myspan");
-	//alert(inputElements.length);
+	alert(inputElements.length);
 	for(var i=0; inputElements[i]; i++){
-		  coursesCurrentSemesterAvail.push(inputElements[i].textContent);
-		  console.log(inputElements[i].textContent);
+		  offered.push(inputElements[i].textContent);
 	}
-	//alert(coursesCurrentSemesterAvail.length);
-}
-
-function softwareEngTrack(){
-
-	checkForTheoryCountSE();
-	checkForSystemCountSE();
-	checkForTheorySE();
-	checkForSystemSE();
-	checkForElectivesSE();
-	
-	document.getElementById("n1").innerHTML = theoryCount;
-	
-	if(theoryCount >= 2)
-		document.getElementById("n2").innerHTML = 0;
-	else
-		document.getElementById("n2").innerHTML = 2 - theoryCount;
-		
-	document.getElementById("n3").innerHTML = systemCount;
-	
-	if(systemCount >= 2)
-		document.getElementById("n4").innerHTML = 0;
-	else
-		document.getElementById("n4").innerHTML = 2 - systemCount;
-	
-	if((systemCount + theoryCount) >= 3){	
-		document.getElementById("n5").innerHTML = 9;
-		document.getElementById("n6").innerHTML = 9;
-	}
-	else{
-		total = (systemCount + theoryCount) * 3;
-		document.getElementById("n5").innerHTML = total;
-		document.getElementById("n6").innerHTML = 9 - total;
-	}
-	
-	totalElective = electiveCoursesDisplayCount * 3;
-	document.getElementById("n7").innerHTML = totalElective;
-	document.getElementById("n8").innerHTML = 12 - totalElective;
-	
-	totalOrientation = orientationCourseDisplayCount * 1;
-	document.getElementById("n9").innerHTML = totalOrientation;
-	document.getElementById("n10").innerHTML = 1 - totalOrientation;
-	
-	totalOtherElective = otherElectiveCoursesDisplayCount * 3;
-	document.getElementById("n11").innerHTML = totalOtherElective;
-	document.getElementById("n12").innerHTML = 9 - totalOtherElective;
-	
-	totalAll = total + totalElective + totalOrientation + totalOtherElective;
-	document.getElementById("n13").innerHTML = totalAll;
-	document.getElementById("n14").innerHTML = 31 - totalAll;
-	
-	document.getElementById("p3").innerHTML = coreCoursesDisplay;
-	document.getElementById("p4").innerHTML = electiveCoursesDisplay;
-	document.getElementById("p5").innerHTML = orientationCourseDisplay;
-	document.getElementById("p6").innerHTML = otherElectiveCoursesDisplay;
-
+	alert(offered);
 }
 
 function move(){
-	
-	softwareEngTrack();
 	document.getElementById('div2').style.display= "none";
 	document.getElementById('div3').style.display= "inline-block";
 	
 }
-
-function checkForTheoryCountSE(){
-	theoryCount = 0;
-	theoryCoursesTaken = [];
-	
-	for(var i=0; theoryCourses[i]; i++){
-		for(var j=0; coursesTaken[j]; j++){
-			if(theoryCourses[i] == coursesTaken[j]){
-				theoryCount += 1;
-				theoryCoursesTaken.push(theoryCourses[i]);
-			}
-		}
-	}
-}
-
-function checkForTheorySE(){
-	theoryColoring = "";
-	for(var i=0; theoryCourses[i]; i++){
-			if(theoryCoursesTaken.indexOf(theoryCourses[i]) > -1 ){
-				theoryColoring = theoryColoring.concat("<font class='boxed_taken'>");
-				theoryColoring = theoryColoring.concat(theoryCourses[i]);
-				theoryColoring = theoryColoring.concat("</font>, ");
-				
-				if(theoryCoursesDisplayCount <= 2 && (theoryCoursesDisplayCount + systemCoursesDisplayCount) <= 3){
-					coreCoursesDisplay = coreCoursesDisplay.concat(theoryCourses[i]);
-					coreCoursesDisplay = coreCoursesDisplay.concat(", ");
-				}else{
-					electiveCoursesDisplay = electiveCoursesDisplay.concat(theoryCourses[i]);
-					electiveCoursesDisplay = electiveCoursesDisplay.concat(", ");
-					electiveCoursesDisplayCount += 1;
-				}
-				theoryCoursesDisplayCount += 1;
-			}
-			else if(theoryCount >= 2 || (systemCount + theoryCount) >= 3){
-				theoryColoring = theoryColoring.concat("<font class='boxed_unavail'>");
-				theoryColoring = theoryColoring.concat(theoryCourses[i]);
-				theoryColoring = theoryColoring.concat("</font>, ");
-			}
-			else if(coursesCurrentSemesterAvail[courses.indexOf(theoryCourses[i])] == "Yes" ){
-				theoryColoring = theoryColoring.concat("<font class='boxed_avail'>");
-				theoryColoring = theoryColoring.concat(theoryCourses[i]);
-				theoryColoring = theoryColoring.concat("</font>, ");
-			}
-			else{
-				theoryColoring = theoryColoring.concat(theoryCourses[i]);
-				theoryColoring = theoryColoring.concat(", ");
-			}
-	}
-	document.getElementById("p1").innerHTML = theoryColoring;
-	//alert(theoryColoring);
-}
-
-function checkForSystemCountSE(){
-	systemCount = 0;
-	systemCoursesTaken = [];
-	
-	for(var i=0; systemCourses[i]; i++){
-		for(var j=0; coursesTaken[j]; j++){
-			if(systemCourses[i] == coursesTaken[j]){
-				systemCount += 1;
-				systemCoursesTaken.push(systemCourses[i]);
-			}
-		}
-	}
-}
-
-function checkForSystemSE(){
-	systemColoring = "";
-	for(var i=0; systemCourses[i]; i++){
-			if(systemCoursesTaken.indexOf(systemCourses[i]) > -1 ){
-				systemColoring = systemColoring.concat("<font class='boxed_taken'>");
-				systemColoring = systemColoring.concat(systemCourses[i]);
-				systemColoring = systemColoring.concat("</font>, ");
-				
-				if(systemCoursesDisplayCount <= 2 && (theoryCoursesDisplayCount + systemCoursesDisplayCount) <= 3){
-					coreCoursesDisplay = coreCoursesDisplay.concat(systemCourses[i]);
-					coreCoursesDisplay = coreCoursesDisplay.concat(", ");
-				}else{
-					electiveCoursesDisplay = electiveCoursesDisplay.concat(systemCourses[i]);
-					electiveCoursesDisplay = electiveCoursesDisplay.concat(", ");
-					electiveCoursesDisplayCount += 1;
-				}
-				systemCoursesDisplayCount += 1;
-			}
-			else if(systemCount >= 2 || (systemCount + theoryCount) >= 3){
-				systemColoring = systemColoring.concat("<font class='boxed_unavail'>");
-				systemColoring = systemColoring.concat(systemCourses[i]);
-				systemColoring = systemColoring.concat("</font>, ");
-			}
-			else if(coursesCurrentSemesterAvail[courses.indexOf(systemCourses[i])] == "Yes" ){
-				systemColoring = systemColoring.concat("<font class='boxed_avail'>");
-				systemColoring = systemColoring.concat(systemCourses[i]);
-				systemColoring = systemColoring.concat("</font>, ");
-			}
-			else{
-				systemColoring = systemColoring.concat(systemCourses[i]);
-				systemColoring = systemColoring.concat(", ");
-			}
-	}
-	document.getElementById("p2").innerHTML = systemColoring;
-	//alert(systemColoring);
-}
-
-function checkForElectivesSE(){
-	for(var i=0; coursesTaken[i]; i++){
-	
-			if(!((theoryCoursesTaken.indexOf(coursesTaken[i]) > -1 ) || (systemCoursesTaken.indexOf(coursesTaken[i]) > -1 ))){
-			// can be CS elective, orientation, or other elective
-			if(coursesTaken[i] == "CSC 600 - Computer Science Graduate Orientation"){
-				orientationCourseDisplay = orientationCourseDisplay.concat(coursesTaken[i]);
-				orientationCourseDisplayCount += 1;
-			}
-			else if(coursesTaken[i].indexOf("CSC") > -1){
-				electiveCoursesDisplay = electiveCoursesDisplay.concat(coursesTaken[i]);
-				electiveCoursesDisplay = electiveCoursesDisplay.concat(", ");
-				electiveCoursesDisplayCount += 1;
-			}
-			else{
-				otherElectiveCoursesDisplay = otherElectiveCoursesDisplay.concat(coursesTaken[i]);
-				otherElectiveCoursesDisplay = otherElectiveCoursesDisplay.concat(", ");
-				otherElectiveCoursesDisplayCount += 1;
-			}
-		}
-	}
-}
 </script>
-  
-  
-  
-  
-    <title>
-      Graduate Student Center
-    </title>
-    <link rel="stylesheet" type="text/css" href="tabbed-panels.css">
-	
-	<style>
-	td, th {
-		padding: 15px;
-		border-bottom: 1px solid #ddd;
-		line-height: 225%;
-	}
-	
-	tr td:first-child { width: 20%;}
-	tr td:first-child + td { color: grey; width: 70%; word-wrap: break-word;}
+</head>
 
-	table {
-		border-collapse: collapse;
-		width: 100%;
-	}
-
-	th {
-		height: 50px;
-	}
-	
-	.boxed_taken {
-	  border: 5px solid green ;
-	  background-color: green;
-	  color: yellow;
-	  font: bold;
-	} 
-	
-	.boxed_avail {
-	  border: 5px solid blue ;
-	  background-color: blue;
-	  color: white;
-	  font: bold;
-	} 
-	
-	.boxed_unavail {
-	  border: 5px solid maroon ;
-	  background-color: maroon;
-	  color: white;
-	  font: bold;
-	} 
-	
-	</style>
-  </head>
-  <body>
-	<table class="red_spacer" summary="Portal Header" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
-	<tbody><tr>
-	<td rowspan="2"><a href="https://portalsp.acs.ncsu.edu/psp/EP91PRD/EMPLOYEE/EMPL/h/?tab=DEFAULT" target="_blank"><img src="NC_MYPACK_HEADER_91A_1.gif" style="display:block;" alt="MyPack Image" border="0"></a></td>
-	<!--
-	<td border="0" cellspacing="0" cellpadding="0" style="padding-top:1px; color:#ffffff; padding-bottom:10px; color:#cc0000;" valign="Top">
-   
-   <table border="0" cellpadding="0" cellspacing="0" width="100%">
-   <tbody><tr nowrap="" class="SIGN_OUT2">
-	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://www.ncsu.edu/directory/" target="_blank&quot;">FIND PEOPLE</a></nobr></td>
-	<td align="center">|</td>
-	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://www.lib.ncsu.edu/" target="_blank&quot;">LIBRARIES</a></nobr></td>
-	<td align="center">|</td>
-	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://news.ncsu.edu/" target="_blank&quot;">NEWS</a></nobr></td>
-	<td align="center">|</td>
-	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://calendar.activedatax.com/ncstate/" target="_blank&quot;">CALENDAR</a></nobr></td>
-	<td align="center">|</td>
-	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="http://www.ncsu.edu/campus_map/" target="_blank&quot;">CAMPUS MAPS</a></nobr></td>
-	<td align="center">|</td>
-	<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="https://portalsp.acs.ncsu.edu/psp/EP91PRD_1/EMPLOYEE/EMPL/h/?tab=DEFAULT">MYPACK HOME</a></nobr></td>
-	<td align="center">|</td>
-		<td class="SIGN_OUT" nowrap="nowrap"><nobr><a class="SIGN_OUT" href="https://portalsp.acs.ncsu.edu/psp/EP91PRD_1/EMPLOYEE/EMPL/e/?url=%3fcmd%3dlogout">SIGN OUT</a></nobr></td>
-		</tr>
-		</tbody></table>
-	</td>-->
-</tr>
-
-</tbody></table>
-</form>
-</td>
-</tr>
-</tbody></table>
-
+<body>
 <div id="div1">
-</br>
 <input type="button" onclick="selectedCourses()" value="Select Courses & Enter Grades - Then Proceed"></input>
 <table>
-<tr><th align="left" style="width: 60%;">Courses</th><th align="left">Grades</th></tr>
+<tr><th align="left">Courses</th><th align="left">Grades</th></tr>
 <tr><td><input class="messageCheckbox" name="courses" type="checkbox" value="CSC 501 - Operating Systems Principles">    CSC 501 - Operating Systems Principles</td><td><select class="gradeNote" name="CSC 501 - Operating Systems Principles"><option value=" "> </option> <option value="C">Currently Enrolled</option> <option value="13/3">A+</option><option value="4">A</option><option value="11/3">A-</option><option value="10/3">B+</option><option value="3">B</option><option value="8/3">B-</option><option value="7/3">C+</option><option value="2">C</option><option value="5/3">C-</option><option value="4/3">D+</option><option value="1">D</option><option value="2/3">D-</option><option value="0">F</option> </select>
 <tr><td><input class="messageCheckbox" name="courses" type="checkbox" value="CSC 503 - Computational Applied Logic">    CSC 503 - Computational Applied Logic</td><td><select class="gradeNote" name="CSC 503 - Computational Applied Logic"><option value=" "> </option> <option value="C">Currently Enrolled</option> <option value="13/3">A+</option><option value="4">A</option><option value="11/3">A-</option><option value="10/3">B+</option><option value="3">B</option><option value="8/3">B-</option><option value="7/3">C+</option><option value="2">C</option><option value="5/3">C-</option><option value="4/3">D+</option><option value="1">D</option><option value="2/3">D-</option><option value="0">F</option> </select>
 <tr><td><input class="messageCheckbox" name="courses" type="checkbox" value="CSC 505 - Design and Analysis Of Algorithms">    CSC 505 - Design and Analysis Of Algorithms</td><td><select class="gradeNote" name="CSC 505 - Design and Analysis Of Algorithms"><option value=" "> </option> <option value="C">Currently Enrolled</option> <option value="13/3">A+</option><option value="4">A</option><option value="11/3">A-</option><option value="10/3">B+</option><option value="3">B</option><option value="8/3">B-</option><option value="7/3">C+</option><option value="2">C</option><option value="5/3">C-</option><option value="4/3">D+</option><option value="1">D</option><option value="2/3">D-</option><option value="0">F</option> </select>
@@ -451,403 +156,92 @@ function checkForElectivesSE(){
 </div>
 
 <div id="div2" style="display: none;">
-</br>
 <input type="button" onclick="move()" value="Proceed to View Requirements"></input>
 <table>
-<tr><th align="left" style="width: 60%;">Courses</th><th align="left">Offered in Current Semester</th></tr>
-<tr><td>CSC 501 - Operating Systems Principles</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 503 - Computational Applied Logic</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 505 - Design and Analysis Of Algorithms</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 506 - Architecture Of Parallel Computers</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 510 - Software Engineering</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 512 - Compiler Construction</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 513 - Electronic Commerce Technology</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 515 - Software Security</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 517 - Object-Oriented Design and Development</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 520 - Artificial Intelligence I</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 521 - Artificial Intelligence Programming</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 522 - Automated Learning and Data Analysis</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 525 - Engineering Knowledge- Based Services</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 530 - Computational Methods for Molecular Biology</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 540 - Database Management concepts and Systems</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 541 - Advanced Data Structures</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 546 - Management Decision and Control Systems</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 547 - Cloud Computing Technology</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 548 - Parallel Systems</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 554 - Human-Computer Interaction</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 555 - Social Computing</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 557 - Multimedia Computing and Networking</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 561 - Principles of Computer Graphics</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 562 - Introduction to Game Engine Design</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 563 - Visual Interfaces for Mobile Devices</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 565 - Graph Theory</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 568 - Enterprise Storage Architecture</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 570 - Computer Networks</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 573 - Internet Protocols</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 574 - Computer and Network Security</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 575 - Introduction to Wireless Networking</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 576 - Networking Services: QoS, Signaling, Processes</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 579 - Introduction to Computer Performance Modeling</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 580 - Numerical Analysis I</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 582 - Computer Models of Interactive Narrative</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 583 - Introduction to Parallel Computing</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 584 - Building Game AI</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 591 - Special Topics In Computer Science</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 600 - Computer Science Graduate Orientation</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 630 - Master's Independent Study</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 685 - Master's Supervised Teaching</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 688 - Non-Thesis Masters Continuous Registration - Half Time Registration</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 689 - Non-Thesis Master Continuous Registration - Full Time Registration</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 690 - Master's Examination</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 693 - Master's Supervised Research</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 695 - Master's Thesis Research</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 696 - Summer Thesis Research</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 699 - Master's Thesis Preparation</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 705 - Operating Systems Security</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 707 - Automata, Languages and Computability Theory</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 710 - Software Engineering as a Human Activity</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 712 - Software Testing and Reliability</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 714 - Real Time Computer Systems</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 720 - Artificial Intelligence II</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 722 - Advanced Topics in Machine Learning</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 724 - Advanced Distributed Systems</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 742 - Database Management Systems</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 743 - Secure Data Management</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 750 - Service-Oriented Computing</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 761 - Advanced Topics in Computer Graphics</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 762 - Computer Simulation Techniques</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 766 - Code Optimization for Scalar and Parallel Programs</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 772 - Survivable Networks</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 773 - Advanced Topics in Internet Protocols</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 774 - Advanced Network Security</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 775 - Advanced Topics in Wireless Networking</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 776 - Design and Performance Evaluation of Network Systems and Services</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 777 - Telecommunications Network Design</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 778 - Optical Networks</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 779 - Advanced Computer Performance Modeling</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 780 - Numerical Analysis II</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 783 - Parallel Algorithms and Scientific Computation</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 791 - Advanced Topics In Computer Science</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 801 - Seminar in Computer Science</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 830 - Doctoral Independent Study</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 885 - Doctoral Supervised Teaching</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 890 - Doctoral Preliminary Exam</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 893 - Doctoral Supervised Research</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 895 - Doctoral Dissertation Research</td><td><span class="myspan" value="No">No</span></td></tr>
-<tr><td>CSC 896 - Summer Dissertation Research</td><td><span class="myspan" value="Yes">Yes</span></td></tr>
-<tr><td>CSC 899 - Doctoral Dissertation Preparation</td><td><span class="myspan" value="No">No</span></td></tr>	
+<tr><th align="left">Courses</th><th align="left">Offered in Current Semester</th></tr>
+<tr><td>CSC 501 - Operating Systems Principles</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 503 - Computational Applied Logic</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 505 - Design and Analysis Of Algorithms</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 506 - Architecture Of Parallel Computers</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 510 - Software Engineering</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 512 - Compiler Construction</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 513 - Electronic Commerce Technology</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 515 - Software Security</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 517 - Object-Oriented Design and Development</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 520 - Artificial Intelligence I</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 521 - Artificial Intelligence Programming</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 522 - Automated Learning and Data Analysis</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 525 - Engineering Knowledge- Based Services</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 530 - Computational Methods for Molecular Biology</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 540 - Database Management concepts and Systems</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 541 - Advanced Data Structures</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 546 - Management Decision and Control Systems</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 547 - Cloud Computing Technology</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 548 - Parallel Systems</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 554 - Human-Computer Interaction</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 555 - Social Computing</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 557 - Multimedia Computing and Networking</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 561 - Principles of Computer Graphics</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 562 - Introduction to Game Engine Design</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 563 - Visual Interfaces for Mobile Devices</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 565 - Graph Theory</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 568 - Enterprise Storage Architecture</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 570 - Computer Networks</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 573 - Internet Protocols</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 574 - Computer and Network Security</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 575 - Introduction to Wireless Networking</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 576 - Networking Services: QoS, Signaling, Processes</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 579 - Introduction to Computer Performance Modeling</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 580 - Numerical Analysis I</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 582 - Computer Models of Interactive Narrative</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 583 - Introduction to Parallel Computing</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 584 - Building Game AI</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 591 - Special Topics In Computer Science</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 600 - Computer Science Graduate Orientation</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 630 - Master's Independent Study</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 685 - Master's Supervised Teaching</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 688 - Non-Thesis Masters Continuous Registration - Half Time Registration</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 689 - Non-Thesis Master Continuous Registration - Full Time Registration</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 690 - Master's Examination</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 693 - Master's Supervised Research</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 695 - Master's Thesis Research</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 696 - Summer Thesis Research</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 699 - Master's Thesis Preparation</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 705 - Operating Systems Security</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 707 - Automata, Languages and Computability Theory</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 710 - Software Engineering as a Human Activity</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 712 - Software Testing and Reliability</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 714 - Real Time Computer Systems</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 720 - Artificial Intelligence II</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 722 - Advanced Topics in Machine Learning</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 724 - Advanced Distributed Systems</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 742 - Database Management Systems</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 743 - Secure Data Management</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 750 - Service-Oriented Computing</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 761 - Advanced Topics in Computer Graphics</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 762 - Computer Simulation Techniques</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 766 - Code Optimization for Scalar and Parallel Programs</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 772 - Survivable Networks</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 773 - Advanced Topics in Internet Protocols</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 774 - Advanced Network Security</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 775 - Advanced Topics in Wireless Networking</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 776 - Design and Performance Evaluation of Network Systems and Services</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 777 - Telecommunications Network Design</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 778 - Optical Networks</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 779 - Advanced Computer Performance Modeling</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 780 - Numerical Analysis II</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 783 - Parallel Algorithms and Scientific Computation</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 791 - Advanced Topics In Computer Science</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 801 - Seminar in Computer Science</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 830 - Doctoral Independent Study</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 885 - Doctoral Supervised Teaching</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 890 - Doctoral Preliminary Exam</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 893 - Doctoral Supervised Research</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 895 - Doctoral Dissertation Research</td><td><span class="myspan" value=" No">No</span></td></tr>
+<tr><td>CSC 896 - Summer Dissertation Research</td><td><span class="myspan" value=" Yes">Yes</span></td></tr>
+<tr><td>CSC 899 - Doctoral Dissertation Preparation</td><td><span class="myspan" value=" No">No</span></td></tr>	
 </table>
 </div>
 
-
-
-
-    <div class="tabbed" id="div3"  style="display: none;">
-      <input name="tabbed" id="tabbed1" type="radio" checked>
-      <section>
-        <h1>
-          <label for="tabbed1">Computer Science</label>
-        </h1>
-        <div>
-			<table>
-			<tr>
-			<td>
-			Theory:
-			</td>
-			<td>
-			<p id="p1"> </p>
-			</td>
-			<td>
-			Max Required: <b>2</b>
-			Taken: <b id="n1"> </b>
-			Remaining: <b id="n2"> </b>
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Systems:
-			</td>
-			<td>
-			<p id="p2"> </p>
-			</td>
-			<td>
-			Max Required: <b>2</b>
-			Taken: <b id="n3"> </b>
-			Remaining: <b id="n4"> </b>
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Advance Alternative Core Courses:
-			</td>
-			<td>
-			<font class="boxed_unavail"> CSC720 (Artificial Intelligence II)</font>   <font class="boxed_unavail">CSC573 (Internet Protocols)
-			</td>
-			<td></td>
-			</font>
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Summary:
-			</td>
-			<td colspan="2">
-			<table >
-			
-			<tr>
-			<td style="width:55%">
-			
-			</td>
-			<td style="width:15%">
-			<b>Credits Required</b>
-			</td>
-			<td style="width:15%">
-			<b>Credits Taken</b>
-			</td>
-			<td style="width:15%">
-			<b>Credits Remaining</b>
-			</td>
-			</tr>
-			
-			
-			<tr>
-			<td style="width:55%">
-			<b>Core Courses</b></br>
-			<p id="p3"> </p>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b>9 </b>
-			</td>
-			<td style="width:15%">
-			<b></b></br>
-			<b id="n5"> </b>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b id="n6"> </b>
-			</td>
-			</tr>
-			
-			<tr>
-			<td style="width:55%">
-			<b>Computer Science graduate electives</b></br>
-			<p id="p4"> </p>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b>12 </b>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b id="n7"> </b>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b id="n8"> </b>
-			</td>
-			</tr>
-			
-			<tr>
-			<td style="width:55%">
-			<b>Orientation Courses</b></br>
-			<p id="p5"> </p>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b>1</b>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b id="n9"> </b>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b id="n10"> </b>
-			</td>
-			</tr>
-			
-			<tr>
-			<td style="width:55%">
-			<b>Computer Science graduate electives, or other "restricted" electives</b></br>
-			<p id="p6"> </p>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b>9</b>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b id="n11"> </b>
-			</td>
-			<td style="width:15%">
-			<b> </b></br>
-			<b id="n12"> </b>
-			</td>
-			</tr>
-			
-			
-			
-			<tr>
-			<td style="width:55%">
-			<b>Total</b></br>
-			</td>
-			<td style="width:15%">
-			<b>31</b></br>
-			</td>
-			<td style="width:15%">
-			<b id="n13"> </b>
-			</td>
-			<td style="width:15%">
-			<b id="n14"> </b>
-			</td>
-			</tr>
-			
-			
-			</table>
-			</td>
-			</tr>
-			<tr >
-			<td colspan="2">
-			<font class="boxed_taken">&nbsp;&nbsp; </font> &nbsp; Core Course(s) already taken </br>
-			<font class="boxed_avail">&nbsp;&nbsp;  </font> &nbsp; Core Course(s) required and offered in current semester  </br>
-			<font class="boxed_unavail"> &nbsp;&nbsp; </font> &nbsp; Core Course(s) not taken and cannot be considered core but elective, these may or may not be offered in current semester </br>
-			&nbsp;<font style="color: grey;"><b>S</b></font>&nbsp;&nbsp;&nbsp; Core Course(s) required but not offered in current semester 
-			</td>
-			</tr>
-			</table>
-
-        </div>
-      </section>
-      <input name="tabbed" id="tabbed2" type="radio">
-      <section>
-        <h1>
-          <label for="tabbed2">Data Science Track</label>
-        </h1>
-        <div>
-			<table>
-			<tr>
-			<td>
-			Theory: Data Science core courses
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Practical:
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Required:
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Remaining:
-			</td>
-			</tr>
-			</table>
-        </div>
-      </section>
-      <input name="tabbed" id="tabbed3" type="radio">
-      <section>
-        <h1>
-          <label for="tabbed3">Software Engineering Track</label>
-        </h1>
-		<div>
-			<table>
-			<tr>
-			<td>
-			Theory:
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Practical:
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Required:
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Remaining:
-			</td>
-			</tr>
-			</table>
-
-        </div>
-		</section>
-      <input name="tabbed" id="tabbed4" type="radio">
-      <section>
-        <h1>
-          <label for="tabbed4">GPA Requirements</label>
-        </h1>
-        <div>
-          Minumum GPA requirmenet for international students is 3.0 to maintain their F1 status.
-        </div>
-      </section>
-      <input name="tabbed" id="tabbed5" type="radio">
-      <section>
-        <h1>
-          <label for="tabbed5">Seminar Requirements</label>
-        </h1>
-        <div>
-		
-			<table>
-			<tr>
-			<td>
-			Minimum number of seminar for MS-CN:
-			</td>
-			<td>
-			4
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Attendend so far:
-			</td>
-			<td>
-			1
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Download attendence form:
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Check your attendence via link:
-			</td>
-			</tr>
-			<tr>
-			<td>
-			Tentative Schedule:
-			</td>
-			<td>
-			http://research.csc.ncsu.edu/colloquia/index-seminar_list.php.
-			</td>
-			</tr>
-			<tr>
-			<td>
-			More information:			
-			</td>
-			</tr>
-			</table>
-        </div>
-      </section>
-      <input name="tabbed" id="tabbed6" type="radio">
-      <section>
-        <h1>
-          <label for="tabbed6">Graduation Checklist</label>
-        </h1>
-        <div>
-			
-        </div>
-      </section>
-    </div>
-  </body>
+</body>
 </html>
