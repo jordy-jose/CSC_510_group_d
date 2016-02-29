@@ -63,7 +63,9 @@ function calculateGPA(){
 			count += 1;
 		}
 	}
-	//alert(total/count)
+	var gpaDisp = (total/count);
+	var gpaMsg = "Your current GPA is: ".concat(gpaDisp);
+	document.getElementById("gpa").innerHTML = gpaMsg;
 	document.getElementById('div1').style.display= "none";
 	document.getElementById('div2').style.display= "inline-block";
 	listOfCourses();
@@ -786,7 +788,8 @@ function checkForElectivesSE(){
           <label for="tabbed4">GPA Requirements</label>
         </h1>
         <div>
-          Minumum GPA requirmenet for international students is 3.0 to maintain their F1 status.
+          <p id="gpa"> </p>
+		  Minumum GPA requirmenet for international students is 3.0 to maintain their F1 status.
         </div>
       </section>
       <input name="tabbed" id="tabbed5" type="radio">
