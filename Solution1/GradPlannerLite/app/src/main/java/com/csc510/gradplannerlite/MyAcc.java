@@ -19,6 +19,7 @@ public class MyAcc extends AppCompatActivity {
     private EditText etEmail;
     private EditText etPhone;
     private Button btnSubmit;
+    private static final String TAG = "MyAcc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class MyAcc extends AppCompatActivity {
         InitializeControls();
         PopulateEditTexts();
         enableRequiredControls();
+
+        Logger.Log(TAG, "Started...");
     }
 
     private void enableRequiredControls() {
@@ -70,11 +73,14 @@ public class MyAcc extends AppCompatActivity {
     }
 
     public void onClickSubmitBtn(View view) {
+        Logger.Log(TAG, "User clicks submit button...");
         persistUserInfo();
         setEnabledForControls(false);
+        Logger.Log(TAG, "User details submitted...");
     }
 
     public void onClickEditBtn(View view) {
+        Logger.Log(TAG, "User clicks Edit button...");
         setEnabledForControls(true);
     }
 

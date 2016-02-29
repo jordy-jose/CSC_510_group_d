@@ -25,6 +25,7 @@ public class Courses extends AppCompatActivity {
 
     private static final int mHeight = 75;
     private RadioGroup.LayoutParams mParams;
+    private static final String TAG = "Courses";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class Courses extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         populateCourses();
+
+        Logger.Log(TAG, "Started...");
     }
 
     private void populateCourses() {
@@ -74,6 +77,7 @@ public class Courses extends AppCompatActivity {
 
     private void removeRadioButton(View radioButton) {
         RadioGroup rgp = getRadioGrp();
+        rgp.clearCheck();
         rgp.removeView(radioButton);
     }
 
@@ -100,10 +104,13 @@ public class Courses extends AppCompatActivity {
     }
 
     public void onClickCoursesAddBtn(View view) {
+        Logger.Log(TAG, "User clicks + button...");
         showMsgAdd();
+        Logger.Log(TAG, "Course added...");
     }
 
     public void onClickCoursesRemBtn(View view) {
+        Logger.Log(TAG, "User clicks - button...");
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
         if (radioButtonID == -1) return;
@@ -114,18 +121,22 @@ public class Courses extends AppCompatActivity {
             removeChkCourse(key);
         }
         removeRadioButton(getRadioBtnView(rGrp, radioButtonID));
+        Logger.Log(TAG, "Course removed...");
     }
 
     public void onClickCoursesEditBtn(View view) {
+        Logger.Log(TAG, "User clicks edit button...");
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
         if (radioButtonID == -1) return;
         String text = getSelectedText(rGrp, radioButtonID);
         if (isChkCoursePresent(text)) return;
         showMsgEdit(text, getRadioButton(rGrp, radioButtonID));
+        Logger.Log(TAG, "Course edited...");
     }
 
     public void onClickCoursesCheckBtn(View view) {
+        Logger.Log(TAG, "User clicks check button...");
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
         if (radioButtonID == -1) return;
@@ -135,6 +146,7 @@ public class Courses extends AppCompatActivity {
             addChkCourse(text);
             getRadioButton(rGrp, radioButtonID).setTextColor(Color.GRAY);
         }
+        Logger.Log(TAG, "Course checked...");
     }
 
     private void showMsgAdd() {

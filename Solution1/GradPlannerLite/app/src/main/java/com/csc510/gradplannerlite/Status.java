@@ -18,6 +18,7 @@ public class Status extends AppCompatActivity {
     private EditText mCourses;
     private EditText mSeminars;
     private EditText mOthers;
+    private static final String TAG = "Status";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class Status extends AppCompatActivity {
 
         initializeControls();
         populateControls();
+
+        Logger.Log(TAG, "Started...");
     }
 
     private void populateControls() {

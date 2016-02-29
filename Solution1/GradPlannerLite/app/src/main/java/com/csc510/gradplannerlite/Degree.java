@@ -21,6 +21,7 @@ public class Degree extends AppCompatActivity {
     private EditText etMajor;
     private EditText etSpec;
     private Button btnSubmit;
+    private static final String TAG = "Degree";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,8 @@ public class Degree extends AppCompatActivity {
         populateDegreeSpinner();
         PopulateEditTexts();
         enableRequiredControls();
+
+        Logger.Log(TAG, "Started...");
     }
 
     private void PopulateEditTexts() {
@@ -69,6 +72,7 @@ public class Degree extends AppCompatActivity {
     }
 
     public void onClickDegSubmitBtn(View view) {
+        Logger.Log(TAG, "User clicks submit button...");
         SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_EDUINFO, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.clear();
@@ -79,6 +83,7 @@ public class Degree extends AppCompatActivity {
 
         editor.commit();
         setEnabledForControls(false);
+        Logger.Log(TAG, "User submits degree details...");
     }
 
     private String getDegreeVal(){ return sDegree.getSelectedItem().toString();}
@@ -90,6 +95,7 @@ public class Degree extends AppCompatActivity {
     }
 
     public void onClickEditBtn(View view) {
+        Logger.Log(TAG, "User clicks edit button...");
         setEnabledForControls(true);
     }
 

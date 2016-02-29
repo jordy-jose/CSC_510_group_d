@@ -17,6 +17,7 @@ public class Seminar extends AppCompatActivity {
 
     private Button btnRemove;
     private Button btnView;
+    private static final String TAG = "Seminar";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class Seminar extends AppCompatActivity {
 
         initializeControls();
         enableControls();
+
+        Logger.Log(TAG, "Started...");
     }
 
     private void enableControls() {
@@ -81,11 +84,13 @@ public class Seminar extends AppCompatActivity {
     }
 
     public void onClickSemView(View view) {
+        Logger.Log(TAG, "User clicks view button...");
         Intent intent = new Intent(this, ViewSeminar.class);
         startActivity(intent);
     }
 
     public void onClickSemRem(View view) {
+        Logger.Log(TAG, "User clicks remove button...");
         int count = getSeminarCount();
         int attended = getSeminarAttended();
         if(count == attended){
@@ -98,15 +103,18 @@ public class Seminar extends AppCompatActivity {
             setEnabled(false);
         }
         showMessageRem();
+        Logger.Log(TAG, "Seminar removed...");
     }
 
     public void onClickSemAdd(View view) {
+        Logger.Log(TAG, "User clicks add button...");
         int count = getSeminarCount();
         if(count == 0){
             setEnabled(true);
         }
         setSemCount(count + 1);
         showMessageAdd();
+        Logger.Log(TAG, "Seminar added...");
     }
 
     private void setSemCount(int count){

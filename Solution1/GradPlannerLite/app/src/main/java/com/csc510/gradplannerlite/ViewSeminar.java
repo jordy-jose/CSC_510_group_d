@@ -18,6 +18,7 @@ public class ViewSeminar extends AppCompatActivity {
 
     private LinearLayout mParent;
     private static final int mHeight = 75;
+    private static final String TAG = "ViewSeminar";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class ViewSeminar extends AppCompatActivity {
 
         setParentLayout();
         createSeminars();
+
+        Logger.Log(TAG, "Started...");
     }
 
     private void createSeminars() {
