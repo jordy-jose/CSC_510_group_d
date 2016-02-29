@@ -40,7 +40,7 @@ public class Status extends AppCompatActivity {
         initializeControls();
         populateControls();
 
-        Logger.Log(TAG, "Started...");
+        Logger.Log(getApplicationContext(), TAG, "Started...");
     }
 
     private void populateControls() {

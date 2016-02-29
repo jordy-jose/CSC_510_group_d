@@ -40,7 +40,7 @@ public class ViewSeminar extends AppCompatActivity {
         setParentLayout();
         createSeminars();
 
-        Logger.Log(TAG, "Started...");
+        Logger.Log(getApplicationContext(), TAG, "Started...");
     }
 
     private void createSeminars() {

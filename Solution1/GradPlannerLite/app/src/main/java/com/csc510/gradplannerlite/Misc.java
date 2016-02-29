@@ -46,7 +46,7 @@ public class Misc extends AppCompatActivity {
 
         populateRequirements();
 
-        Logger.Log(TAG, "Started...");
+        Logger.Log(getApplicationContext(), TAG, "Started...");
     }
 
     private void populateRequirements() {
@@ -104,7 +104,7 @@ public class Misc extends AppCompatActivity {
     }
 
     public void onClickMiscCheckBtn(View view) {
-        Logger.Log(TAG, "User clicks check button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks check button...");
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
         if (radioButtonID == -1) return;
@@ -114,22 +114,22 @@ public class Misc extends AppCompatActivity {
             addRequirementChk(text);
             getRadioButton(rGrp, radioButtonID).setTextColor(Color.GRAY);
         }
-        Logger.Log(TAG, "Requirement checked...");
+        Logger.Log(getApplicationContext(), TAG, "Requirement checked...");
     }
 
     public void onClickMiscEditBtn(View view) {
-        Logger.Log(TAG, "User clicks edit button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks edit button...");
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
         if (radioButtonID == -1) return;
         String text = getSelectedText(rGrp, radioButtonID);
         if (isChkPresent(text)) return;
         showMsgEdit(text, getRadioButton(rGrp, radioButtonID));
-        Logger.Log(TAG, "Requirement edited...");
+        Logger.Log(getApplicationContext(), TAG, "Requirement edited...");
     }
 
     public void onClickMiscRemBtn(View view) {
-        Logger.Log(TAG, "User clicks - button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks - button...");
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
         if (radioButtonID == -1) return;
@@ -140,13 +140,13 @@ public class Misc extends AppCompatActivity {
             removeRequirementChk(key);
         }
         removeRadioButton(getRadioBtnView(rGrp, radioButtonID));
-        Logger.Log(TAG, "Requirement removed...");
+        Logger.Log(getApplicationContext(), TAG, "Requirement removed...");
     }
 
     public void onClickMiscAddBtn(View view) {
-        Logger.Log(TAG, "User clicks + button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks + button...");
         showMsgAdd();
-        Logger.Log(TAG, "Requirement added...");
+        Logger.Log(getApplicationContext(), TAG, "Requirement added...");
     }
 
     private String getSelectedText(RadioGroup rGrp, int radioBtnId) {

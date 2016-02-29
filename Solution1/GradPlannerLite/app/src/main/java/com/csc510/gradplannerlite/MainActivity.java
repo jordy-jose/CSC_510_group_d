@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        Logger.Log(TAG, "Started...");
+        Logger.Log(getApplicationContext(), TAG, "Started...");
     }
 
     @Override
@@ -55,37 +55,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickMyAcc(View view) {
-        Logger.Log(TAG, "User clicks my acc button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks my acc button...");
         Intent intent = new Intent(this, MyAcc.class);
         startActivity(intent);
     }
 
     public void onClickDegree(View view) {
-        Logger.Log(TAG, "User clicks degree button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks degree button...");
         Intent intent = new Intent(this, Degree.class);
         startActivity(intent);
     }
 
     public void onClickSeminar(View view) {
-        Logger.Log(TAG, "User clicks seminar button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks seminar button...");
         Intent intent = new Intent(this, Seminar.class);
         startActivity(intent);
     }
 
     public void onClickMisc(View view) {
-        Logger.Log(TAG, "User clicks miscellaneous button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks miscellaneous button...");
         Intent intent = new Intent(this, Misc.class);
         startActivity(intent);
     }
 
     public void onClickCourses(View view) {
-        Logger.Log(TAG, "User clicks courses button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks courses button...");
         Intent intent = new Intent(this, Courses.class);
         startActivity(intent);
     }
 
     public void onClickStatus(View view) {
-        Logger.Log(TAG, "User clicks status button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks status button...");
         Intent intent = new Intent(this, Status.class);
         startActivity(intent);
     }

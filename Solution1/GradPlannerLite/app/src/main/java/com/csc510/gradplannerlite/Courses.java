@@ -46,7 +46,7 @@ public class Courses extends AppCompatActivity {
 
         populateCourses();
 
-        Logger.Log(TAG, "Started...");
+        Logger.Log(getApplicationContext(), TAG, "Started...");
     }
 
     private void populateCourses() {
@@ -104,13 +104,13 @@ public class Courses extends AppCompatActivity {
     }
 
     public void onClickCoursesAddBtn(View view) {
-        Logger.Log(TAG, "User clicks + button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks + button...");
         showMsgAdd();
-        Logger.Log(TAG, "Course added...");
+        Logger.Log(getApplicationContext(), TAG, "Course added...");
     }
 
     public void onClickCoursesRemBtn(View view) {
-        Logger.Log(TAG, "User clicks - button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks - button...");
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
         if (radioButtonID == -1) return;
@@ -121,22 +121,22 @@ public class Courses extends AppCompatActivity {
             removeChkCourse(key);
         }
         removeRadioButton(getRadioBtnView(rGrp, radioButtonID));
-        Logger.Log(TAG, "Course removed...");
+        Logger.Log(getApplicationContext(), TAG, "Course removed...");
     }
 
     public void onClickCoursesEditBtn(View view) {
-        Logger.Log(TAG, "User clicks edit button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks edit button...");
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
         if (radioButtonID == -1) return;
         String text = getSelectedText(rGrp, radioButtonID);
         if (isChkCoursePresent(text)) return;
         showMsgEdit(text, getRadioButton(rGrp, radioButtonID));
-        Logger.Log(TAG, "Course edited...");
+        Logger.Log(getApplicationContext(), TAG, "Course edited...");
     }
 
     public void onClickCoursesCheckBtn(View view) {
-        Logger.Log(TAG, "User clicks check button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks check button...");
         RadioGroup rGrp = getRadioGrp();
         int radioButtonID = rGrp.getCheckedRadioButtonId();
         if (radioButtonID == -1) return;
@@ -146,7 +146,7 @@ public class Courses extends AppCompatActivity {
             addChkCourse(text);
             getRadioButton(rGrp, radioButtonID).setTextColor(Color.GRAY);
         }
-        Logger.Log(TAG, "Course checked...");
+        Logger.Log(getApplicationContext(), TAG, "Course checked...");
     }
 
     private void showMsgAdd() {

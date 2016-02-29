@@ -45,7 +45,7 @@ public class Degree extends AppCompatActivity {
         PopulateEditTexts();
         enableRequiredControls();
 
-        Logger.Log(TAG, "Started...");
+        Logger.Log(getApplicationContext(), TAG, "Started...");
     }
 
     private void PopulateEditTexts() {
@@ -72,7 +72,7 @@ public class Degree extends AppCompatActivity {
     }
 
     public void onClickDegSubmitBtn(View view) {
-        Logger.Log(TAG, "User clicks submit button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks submit button...");
         SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_EDUINFO, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.clear();
@@ -83,7 +83,7 @@ public class Degree extends AppCompatActivity {
 
         editor.commit();
         setEnabledForControls(false);
-        Logger.Log(TAG, "User submits degree details...");
+        Logger.Log(getApplicationContext(), TAG, "User submits degree details...");
     }
 
     private String getDegreeVal(){ return sDegree.getSelectedItem().toString();}
@@ -95,7 +95,7 @@ public class Degree extends AppCompatActivity {
     }
 
     public void onClickEditBtn(View view) {
-        Logger.Log(TAG, "User clicks edit button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks edit button...");
         setEnabledForControls(true);
     }
 

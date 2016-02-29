@@ -39,7 +39,7 @@ public class Seminar extends AppCompatActivity {
         initializeControls();
         enableControls();
 
-        Logger.Log(TAG, "Started...");
+        Logger.Log(getApplicationContext(), TAG, "Started...");
     }
 
     private void enableControls() {
@@ -84,13 +84,13 @@ public class Seminar extends AppCompatActivity {
     }
 
     public void onClickSemView(View view) {
-        Logger.Log(TAG, "User clicks view button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks view button...");
         Intent intent = new Intent(this, ViewSeminar.class);
         startActivity(intent);
     }
 
     public void onClickSemRem(View view) {
-        Logger.Log(TAG, "User clicks remove button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks remove button...");
         int count = getSeminarCount();
         int attended = getSeminarAttended();
         if(count == attended){
@@ -103,18 +103,18 @@ public class Seminar extends AppCompatActivity {
             setEnabled(false);
         }
         showMessageRem();
-        Logger.Log(TAG, "Seminar removed...");
+        Logger.Log(getApplicationContext(), TAG, "Seminar removed...");
     }
 
     public void onClickSemAdd(View view) {
-        Logger.Log(TAG, "User clicks add button...");
+        Logger.Log(getApplicationContext(), TAG, "User clicks add button...");
         int count = getSeminarCount();
         if(count == 0){
             setEnabled(true);
         }
         setSemCount(count + 1);
         showMessageAdd();
-        Logger.Log(TAG, "Seminar added...");
+        Logger.Log(getApplicationContext(), TAG, "Seminar added...");
     }
 
     private void setSemCount(int count){
