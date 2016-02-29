@@ -14,13 +14,23 @@
         <url-pattern>/MyTrackerApplication/MyTrackerApplicationService</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>com.myTrackerApplication.MyTrackerApplication MyLoginHelperService</servlet-name>
-        <servlet-class>com.myTrackerApplication.UserAuthentication.LoginHelper</servlet-class>
+        <servlet-class>com.myTrackerApplication.UserAuthentication.LoginHelperService</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>com.myTrackerApplication.MyTrackerApplication MyLoginHelperService</servlet-name>
         <url-pattern>/MyTrackerApplication/MyLoginHelperService</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>com.myTrackerApplication.MyTrackerApplication MyDBHelperService</servlet-name>
+        <servlet-class>com.myTrackerApplication.UserAuthentication.DBHelperService</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>com.myTrackerApplication.MyTrackerApplication MyDBHelperService</servlet-name>
+        <url-pattern>/MyTrackerApplication/MyDBHelperService</url-pattern>
     </servlet-mapping>
 
     <servlet>

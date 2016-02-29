@@ -11,7 +11,7 @@ import com.myTrackerApplication.Interfaces.IDatabaseConnection;
 class DatabaseConnection implements IDatabaseConnection{
 
 	private Connection m_Connection = null;
-    static final String s_JdbcURL = "jdbc:mysql://localhost/demo?autoReconnect=true&useSSL=false";
+    static final String s_JdbcURL = "jdbc:mysql://localhost/solution_2?autoReconnect=true&useSSL=false";
     static final String s_DbDriver = "com.mysql.jdbc.Driver";
     static final String s_User = "root";
     static final String s_Password = "password";

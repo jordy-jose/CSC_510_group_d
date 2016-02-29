@@ -1,0 +1,86 @@
+/*!** Add css rules here for your application. *!*/
+
+/** Most GWT widgets already have a style name defined */
+.gwt-Label{
+    font: bold 15px/1.5 'Open Sans', sans-serif;
+}
+
+.gwt-Heading{
+    font: bold 25px/1.5 'Open Sans', sans-serif;
+    color: white;
+}
+
+.gwt-LoginButton {
+    display: block;
+    border-radius: 1px;
+    font: bold 15px/1.5 'Open Sans', sans-serif;
+    background-color: darkgray;
+    color: black;
+    font-weight: bold;
+    padding: 10px 25px;
+    border: 0;
+    margin: 55px auto 0;
+    cursor: pointer;
+}
+
+.gwt-RegisterAnchor{
+    text-align: center;
+    /*font: bold 10px/1.5 'Open Sans', sans-serif;*/
+    /*padding: 0.1cm 0.1cm 0.1cm 0.1cm;*/
+    display: block;
+    color: darkblue;
+    text-decoration: none;
+}
+
+.gwt-LoginPanel {
+    height: 100px;
+    width: 100px;
+    vertical-align: top;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    top: 200px;
+    left: 560px;
+    margin: 0;
+    overflow: auto;
+}
+
+.gwt-DataPanel {
+    height: 75%;
+    width: 600px;
+    vertical-align: top;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    top: 200px;
+    left: 450px;
+    margin: 0;
+    overflow: auto;
+}
+
+.gwt-VerticalPanel{
+    vertical-align: top;
+    line-height: 30px;
+    text-align: center;
+    padding: 0.1cm 0.1cm 0.1cm 0.1cm;
+    list-style-type: none;
+    margin: 0;
+    width: 100%;
+    background-color: darkgreen;
+    height: 100%;
+    overflow: auto;
+}
+
+.gwt-VAnchor{
+    text-align: center;
+    font: bold 20px/1.5 'Open Sans', sans-serif;
+    padding: 0.1cm 0.1cm 0.1cm 0.1cm;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.gwt-VAnchor:hover{
+    background-color: #555;
+    color: white;
+}

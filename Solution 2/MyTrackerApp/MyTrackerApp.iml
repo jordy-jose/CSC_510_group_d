@@ -5,7 +5,7 @@
       <configuration>
         <setting name="compilerMaxHeapSize" value="1024" />
         <setting name="gwtScriptOutputStyle" value="DETAILED" />
-        <setting name="gwtSdkUrl" value="file://$MODULE_DIR$/../SE/gwt-2.7.0" />
+        <setting name="gwtSdkUrl" value="file://$MODULE_DIR$/../../../../../gwt-2.7.0" />
         <setting name="webFacet" value="Web" />
       </configuration>
     </facet>
@@ -29,8 +29,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Jetty 9.3.7.v20160115" level="application_server_libraries" />
-    <orderEntry type="library" name="gwt-user" level="project" />
     <orderEntry type="library" name="jbcrypt-0.2" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.38-bin1" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.38-bin" level="project" />
+    <orderEntry type="library" name="gwt-user" level="project" />
   </component>
 </module>
