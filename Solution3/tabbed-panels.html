@@ -11,12 +11,21 @@ var courses = [];
 var coursesCurrentSemesterAvail = [];
 var theoryCourses = ["CSC 503 - Computational Applied Logic", "CSC 505 - Design and Analysis Of Algorithms", "CSC 512 - Compiler Construction", "CSC 565 - Graph Theory", "CSC 579 - Introduction to Computer Performance Modeling", "CSC 580 - Numerical Analysis I", "CSC 707 - Automata, Languages and Computability Theory"];
 var systemCourses = ["CSC 501 - Operating Systems Principles", "CSC 506 - Architecture Of Parallel Computers", "CSC 510 - Software Engineering", "CSC 520 - Artificial Intelligence I", "CSC 540 - Database Management concepts and Systems", "CSC 561 - Principles of Computer Graphics", "CSC 570 - Computer Networks"];
+var advanceSystemCourses = ["CSC 720 - Artificial Intelligence II", "CSC 573 - Internet Protocols"];
 var theoryCount = 0;
 var systemCount = 0;
+var advanceTheoryCount = 0;
+var advanceSystemCount = 0;
+var advanceSystemCommonCount = 0;
 var theoryColoring = "";
 var systemColoring = "";
+var advancedTheoryColoring = "";
+var advancedSystemColoring = "";
 var theoryCoursesTaken = [];
 var systemCoursesTaken = [];
+var advanceTheoryCoursesTaken = [];
+var advanceSystemCoursesTaken = [];
+advanceSystemCoursesTakenDuplicate = [];
 var coreCoursesDisplay = "";
 var theoryCoursesDisplayCount = 0;
 var systemCoursesDisplayCount = 0;
@@ -95,9 +104,12 @@ function softwareEngTrack(){
 
 	checkForTheoryCountSE();
 	checkForSystemCountSE();
+	checkForAdvancedSystemCountSE();
 	checkForTheorySE();
 	checkForSystemSE();
+	checkForAdvancedSystemSE();
 	checkForElectivesSE();
+	var total = 0;
 	
 	document.getElementById("n1").innerHTML = theoryCount;
 	
@@ -114,8 +126,9 @@ function softwareEngTrack(){
 		document.getElementById("n4").innerHTML = 2 - systemCount;
 	
 	if((systemCount + theoryCount) >= 3){	
+		total = 9;
 		document.getElementById("n5").innerHTML = 9;
-		document.getElementById("n6").innerHTML = 9;
+		document.getElementById("n6").innerHTML = 0;
 	}
 	else{
 		total = (systemCount + theoryCount) * 3;
@@ -151,6 +164,13 @@ function move(){
 	softwareEngTrack();
 	document.getElementById('div2').style.display= "none";
 	document.getElementById('div3').style.display= "inline-block";
+	
+}
+
+function moveToMain(){
+	
+	document.getElementById('div3').style.display= "none";
+	document.getElementById('div1').style.display= "inline-block";
 	
 }
 
@@ -219,6 +239,37 @@ function checkForSystemCountSE(){
 	}
 }
 
+function checkForAdvancedSystemCountSE(){
+	advanceSystemCount = 0;
+	advanceSystemCoursesTaken = [];
+	advanceSystemCoursesTakenDuplicate = [];
+	
+	for(var i=0; advanceSystemCourses[i]; i++){
+		for(var j=0; coursesTaken[j]; j++){
+			if(advanceSystemCourses[i] == coursesTaken[j]){
+			
+				if(advanceSystemCourses[i] == "CSC 720 - Artificial Intelligence II" && (coursesTaken.indexOf("CSC 520 - Artificial Intelligence I") > -1 )){
+					advanceSystemCommonCount += 1;
+					advanceSystemCount += 1;
+					advanceSystemCoursesTaken.push(advanceSystemCourses[i]);					
+					advanceSystemCoursesTakenDuplicate.push(advanceSystemCourses[i]);
+				}
+				else if(advanceSystemCourses[i] == "CSC 573 - Internet Protocols" && (coursesTaken.indexOf("CSC 570 - Computer Networks") > -1 )){
+					advanceSystemCommonCount += 1;
+					advanceSystemCount += 1;
+					advanceSystemCoursesTaken.push(advanceSystemCourses[i]);
+					advanceSystemCoursesTakenDuplicate.push(advanceSystemCourses[i]);
+				}
+				else{
+					systemCount += 1;
+					advanceSystemCount += 1;
+					advanceSystemCoursesTaken.push(advanceSystemCourses[i]);
+				}
+			}
+		}
+	}
+}
+
 function checkForSystemSE(){
 	systemColoring = "";
 	for(var i=0; systemCourses[i]; i++){
@@ -256,10 +307,47 @@ function checkForSystemSE(){
 	//alert(systemColoring);
 }
 
+function checkForAdvancedSystemSE(){
+	advancedSystemColoring = "";
+	for(var i=0; advanceSystemCourses[i]; i++){
+			if(advanceSystemCoursesTaken.indexOf(advanceSystemCourses[i]) > -1 ){
+				advancedSystemColoring = advancedSystemColoring.concat("<font class='boxed_taken'>");
+				advancedSystemColoring = advancedSystemColoring.concat(advanceSystemCourses[i]);
+				advancedSystemColoring = advancedSystemColoring.concat("</font>, ");
+				
+				if(systemCoursesDisplayCount <= 2 && (theoryCoursesDisplayCount + systemCoursesDisplayCount) <= 3 && !(advanceSystemCoursesTakenDuplicate.indexOf(advanceSystemCourses[i]) > -1)){
+					coreCoursesDisplay = coreCoursesDisplay.concat(advanceSystemCourses[i]);
+					coreCoursesDisplay = coreCoursesDisplay.concat(", ");
+				}else{
+					electiveCoursesDisplay = electiveCoursesDisplay.concat(advanceSystemCourses[i]);
+					electiveCoursesDisplay = electiveCoursesDisplay.concat(", ");
+					electiveCoursesDisplayCount += 1;
+				}
+				systemCoursesDisplayCount += 1;
+			}
+			else if(systemCount >= 2 || (systemCount + theoryCount) >= 3){
+				advancedSystemColoring = advancedSystemColoring.concat("<font class='boxed_unavail'>");
+				advancedSystemColoring = advancedSystemColoring.concat(advanceSystemCourses[i]);
+				advancedSystemColoring = advancedSystemColoring.concat("</font>, ");
+			}
+			else if(coursesCurrentSemesterAvail[courses.indexOf(advanceSystemCourses[i])] == "Yes" ){
+				advancedSystemColoring = advancedSystemColoring.concat("<font class='boxed_avail'>");
+				advancedSystemColoring = advancedSystemColoring.concat(advanceSystemCourses[i]);
+				advancedSystemColoring = advancedSystemColoring.concat("</font>, ");
+			}
+			else{
+				advancedSystemColoring = advancedSystemColoring.concat(advanceSystemCourses[i]);
+				advancedSystemColoring = advancedSystemColoring.concat(", ");
+			}
+	}
+	document.getElementById("p7").innerHTML = advancedSystemColoring;
+	//alert(advancedSystemColoring);
+}
+
 function checkForElectivesSE(){
 	for(var i=0; coursesTaken[i]; i++){
 	
-			if(!((theoryCoursesTaken.indexOf(coursesTaken[i]) > -1 ) || (systemCoursesTaken.indexOf(coursesTaken[i]) > -1 ))){
+			if(!((theoryCoursesTaken.indexOf(coursesTaken[i]) > -1 ) || (systemCoursesTaken.indexOf(coursesTaken[i]) > -1 ) || (advanceSystemCoursesTaken.indexOf(coursesTaken[i]) > -1 ))){
 			// can be CS elective, orientation, or other elective
 			if(coursesTaken[i] == "CSC 600 - Computer Science Graduate Orientation"){
 				orientationCourseDisplay = orientationCourseDisplay.concat(coursesTaken[i]);
@@ -583,7 +671,7 @@ function checkForElectivesSE(){
 			Advance Alternative Core Courses:
 			</td>
 			<td>
-			<font class="boxed_unavail"> CSC720 (Artificial Intelligence II)</font>   <font class="boxed_unavail">CSC573 (Internet Protocols)
+			<p id="p7"> </p>
 			</td>
 			<td></td>
 			</font>
@@ -851,6 +939,7 @@ function checkForElectivesSE(){
 			
         </div>
       </section>
+	  <input type="button" onclick="moveToMain()" value="Selection Page"></input>
     </div>
   </body>
 </html>
