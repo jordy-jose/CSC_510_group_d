@@ -9,22 +9,19 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.csc510.gradplannerlite.UpdateInfo"
-    tools:showIn="@layout/activity_update_info">
+    tools:context="com.csc510.gradplannerlite.ViewSeminar"
+    tools:showIn="@layout/activity_view_seminar">
 
     <LinearLayout
+        android:id="@+id/viewSeminarLL"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Personal Information"
-            android:id="@+id/piButton"
-            android:onClick="onClickpiButton"/>
+        android:layout_alignParentTop="true"
+        android:weightSum="6">
     </LinearLayout>
+
 </RelativeLayout>

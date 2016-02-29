@@ -1,6 +1,7 @@
 package com.csc510.gradplannerlite;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,17 +12,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class UserInfo extends AppCompatActivity {
+public class MyAcc extends AppCompatActivity {
 
     private EditText etName;
     private EditText etDob;
     private EditText etEmail;
     private EditText etPhone;
     private Button btnSubmit;
+    private static final String TAG = "MyAcc";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_info);
+        setContentView(R.layout.activity_my_acc);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -37,22 +40,24 @@ public class UserInfo extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         InitializeControls();
         PopulateEditTexts();
-        enableControls();
+        enableRequiredControls();
+
+        Logger.Log(getApplicationContext(), TAG, "Started...");
     }
 
-    private void enableControls() {
+    private void enableRequiredControls() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
             if(!getName().isEmpty() ||
                     !getDOB().isEmpty() ||
                     !getEmail().isEmpty() ||
                     !getPhone().isEmpty()){
-                SetEnabledForControls(false);
+                setEnabledForControls(false);
             }
         }
     }
 
     private void PopulateEditTexts() {
-        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_NAME, 0);
+        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_USERINFO, 0);
         etName.setText(settings.getString(SharedPreferencesKeys.UserName, ""));
         etDob.setText(settings.getString(SharedPreferencesKeys.UserDOB, ""));
         etEmail.setText(settings.getString(SharedPreferencesKeys.UserEmail, ""));
@@ -68,24 +73,27 @@ public class UserInfo extends AppCompatActivity {
     }
 
     public void onClickSubmitBtn(View view) {
+        Logger.Log(getApplicationContext(), TAG, "User clicks submit button...");
         persistUserInfo();
+        setEnabledForControls(false);
+        Logger.Log(getApplicationContext(), TAG, "User details submitted...");
+    }
+
+    public void onClickEditBtn(View view) {
+        Logger.Log(getApplicationContext(), TAG, "User clicks Edit button...");
+        setEnabledForControls(true);
     }
 
     private void persistUserInfo() {
-        String name = getName();
-        String dob = getDOB();
-        String email = getEmail();
-        String phone = getPhone();
-
-        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_NAME, 0);
+        SharedPreferences settings = getSharedPreferences(SharedPreferencesKeys.PREFS_USERINFO, 0);
         SharedPreferences.Editor editor = settings.edit();
 
         editor.clear();
 
-        editor.putString(SharedPreferencesKeys.UserName, name);
-        editor.putString(SharedPreferencesKeys.UserDOB, dob);
-        editor.putString(SharedPreferencesKeys.UserEmail, email);
-        editor.putString(SharedPreferencesKeys.UserPhone, phone);
+        editor.putString(SharedPreferencesKeys.UserName, getName());
+        editor.putString(SharedPreferencesKeys.UserDOB, getDOB());
+        editor.putString(SharedPreferencesKeys.UserEmail, getEmail());
+        editor.putString(SharedPreferencesKeys.UserPhone, getPhone());
 
         editor.commit();
     }
@@ -96,21 +104,31 @@ public class UserInfo extends AppCompatActivity {
     private String getDOB(){
         return etDob.getText().toString();
     }
-    private String getEmail(){
-        return etEmail.getText().toString();
-    }
+    private String getEmail(){ return etEmail.getText().toString(); }
     private String getPhone(){
         return etPhone.getText().toString();
     }
-    public void onClickEditBtn(View view) {
-        SetEnabledForControls(true);
+
+    private void setEnabledForControls(boolean enabled){
+        etName.setEnabled(enabled);
+        etDob.setEnabled(enabled);
+        etEmail.setEnabled(enabled);
+        etPhone.setEnabled(enabled);
+        btnSubmit.setEnabled(enabled);
+        setBackgroundColor(enabled);
     }
 
-    private void SetEnabledForControls(boolean enable) {
-        etName.setEnabled(enable);
-        etDob.setEnabled(enable);
-        etEmail.setEnabled(enable);
-        etPhone.setEnabled(enable);
-        btnSubmit.setEnabled(enable);
+    private void setBackgroundColor(boolean enabled){
+        int color;
+        if(enabled){
+            color = Color.WHITE;
+        }else{
+            color = Color.GRAY;
+        }
+        etName.setTextColor(color);
+        etDob.setTextColor(color);
+        etEmail.setTextColor(color);
+        etPhone.setTextColor(color);
+        btnSubmit.setTextColor(color);
     }
 }

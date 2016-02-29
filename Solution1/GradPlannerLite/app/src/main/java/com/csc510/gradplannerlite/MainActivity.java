@@ -9,9 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        Logger.Log(getApplicationContext(), TAG, "Started...");
     }
 
     @Override
@@ -52,8 +54,39 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickUpdateInfo(View view) {
-        Intent intent = new Intent(this, UpdateInfo.class);
+    public void onClickMyAcc(View view) {
+        Logger.Log(getApplicationContext(), TAG, "User clicks my acc button...");
+        Intent intent = new Intent(this, MyAcc.class);
+        startActivity(intent);
+    }
+
+    public void onClickDegree(View view) {
+        Logger.Log(getApplicationContext(), TAG, "User clicks degree button...");
+        Intent intent = new Intent(this, Degree.class);
+        startActivity(intent);
+    }
+
+    public void onClickSeminar(View view) {
+        Logger.Log(getApplicationContext(), TAG, "User clicks seminar button...");
+        Intent intent = new Intent(this, Seminar.class);
+        startActivity(intent);
+    }
+
+    public void onClickMisc(View view) {
+        Logger.Log(getApplicationContext(), TAG, "User clicks miscellaneous button...");
+        Intent intent = new Intent(this, Misc.class);
+        startActivity(intent);
+    }
+
+    public void onClickCourses(View view) {
+        Logger.Log(getApplicationContext(), TAG, "User clicks courses button...");
+        Intent intent = new Intent(this, Courses.class);
+        startActivity(intent);
+    }
+
+    public void onClickStatus(View view) {
+        Logger.Log(getApplicationContext(), TAG, "User clicks status button...");
+        Intent intent = new Intent(this, Status.class);
         startActivity(intent);
     }
 }
