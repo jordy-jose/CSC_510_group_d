@@ -7,28 +7,49 @@ Academic Project - CSC 510 - Software Engineering
 [Sameer Sharma] (https://github.com/ssharm) ,
 [Stuti Nanda] (https://github.com/stutinanda)
 
-#Problem Statement:
+#Quick Links:
+1. [Repo's issue page] (https://github.com/jordy-jose/CSC_510_group_d/issues) <br />
 
-Lot of factors play role while coming up with a graduation plan. Students should keep all these factors in mind while selecting courses for the semester. But as these factors are large in number and varied in nature this becomes a cumbersome task. To understand the problem we can consider a scenario where student decides to switch his or her stream of education after completing one semester in particular stream. As there are different criteria to be fulfilled for every stream. The student who has made such a switch has to be aware of all the requirements that need to be fulfilled. In many cases this kind of switch can lead to disastrous results if ample attention is not paid earlier at the time of making the switch. As the student has already completed one semester and finished 9 credits it is possible that requirements of the new stream can not be fulfilled due to shortage of credits remaining.
+2. [Repo's milestone page] (https://github.com/jordy-jose/CSC_510_group_d/milestones) <br />
 
-We plan to come up with a tool that provide students with a more comprehensive picture of things that needs to be done in order to complete the degree requirements in the target timeframe. This can be an independent tool or a tool that builds on existing mypack portal that targets to improve user experience at the same time providing a clearer and comprehensive understanding of where the student stands with respect to his or her graduation goal. Our target audience is the currently enrolled students in the university.
+3. [Repo's contributor page](https://github.com/jordy-jose/CSC_510_group_d/graphs/contributors) <br />
 
-This tool can be seen as advising portal where a student can log in and enter the details to get a list of ‘Things to Do’ in order to graduate on the target date. We plan to provide useful graduation information that is scattered at different sites at this moment in one place. This will aid students to select the subjects more efficiently and make sure that none of the requirements are left unattended. Our tool can be extended to provide suggestions to the students while selecting subjects for a particular semester after assessing the current position where student stands and the list of subjects being offered that semester. These suggestions are made as a result of careful examination of the data provided by the user and the constraints that need to be met. For an instance, many subjects have pre-requisite that needs to be fulfilled in order to enroll in these courses the suggestions made by the tool take care of these constraints while shortlisting the subjects shown to the user. This tool can act as student advisor for the self-motivated students with clear goal in their mind.
+4. [Sample telemetry output log] (https://github.com/jordy-jose/CSC_510_group_d/blob/master/Solution1/log/GradPlannerLiteLog.txt) <br />
 
+5. Demo slot timing: Friday, March 4th, 1PM
 
-QUICK LINKS:
-
-[Repo's issue page] (https://github.com/jordy-jose/CSC_510_group_d/issues) <br />
-
-[Repo's milestone page] (https://github.com/jordy-jose/CSC_510_group_d/milestones) <br />
-
-[Repo's contributor page](https://github.com/jordy-jose/CSC_510_group_d/graphs/contributors) <br />
-
-Sample telemetry output log:
-
-Demo slot timing:
-
-Code directory:
+6. Code directory: <br />
+a. Common base: <br />
+<p> Solution 3 (Enchancing the existing Tool) requires the Tool to have the data of the user i.e. existing enrollments, past enrollments and grades. Currently solution3 is providing these contextual details beforehand, we can if need be, utilize the database module of solution 3 to do the same.  </p>
+b. Code for the three solutions: <br />
+[Solution1] (https://github.com/jordy-jose/CSC_510_group_d/tree/master/Solution1) <br />
+[Solution2] (https://github.com/jordy-jose/CSC_510_group_d/tree/master/Solution%202/MyTrackerApp) <br />
+[Solution3] (https://github.com/jordy-jose/CSC_510_group_d/tree/master/Solution3) <br />
 
 Evalution plan:
->>>>>>> master
+<p>
+We plan to evaluate all the three solutions by conducting a study which will include and will not be limited to users using the solutions and taking surveys.  </p>
+<p>
+Our user group would be fellow students in grad school using the epack currently.  While doing so we would come up certain tasks that they should try to do and rate in the surveys we conduct for each of the solutions the user tries. For example: could you find the number of seminars you have taken so far, do you know where the requirements are. Also, we plan to include in our surveys questions which can help us decide if any one particular solution was better than the other for a particular feature. Our aim being, trying to find all the features the user likes and concluding to an extent what would qualify as a better GradTool than the existing tool. </p>
+
+
+milestones1: Creating surveys <br/>
+issue: Creating survey for sol 1:<br/>
+issue:Creating survey for sol2:<br/>
+issue:creating survey for sol3:<br/>
+issue:creating survey for sol1 vs sol2 vs <br/>
+
+milestone2: conduction study<br/>
+issue:sol1<br/>
+issue:sol2<br/>
+issue:sol3<br/>
+
+milestone3: conducting survveys<br/>
+issue:sol1<br/>
+issue:sol2<br/>
+issue:sol3<br/>
+
+milestone 4: Reaching a conclusion 
+<br/>
+issue: collborating survey outcomes <br />
+issue: reaching a conclusion<br />
