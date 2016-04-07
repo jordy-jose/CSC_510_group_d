@@ -25,6 +25,6 @@ Academic Project - CSC 510 - Software Engineering
     [Solution2] (https://github.com/jordy-jose/CSC_510_group_d/tree/master/Solution%202/MyTrackerApp) <br />
     [Solution3] (https://github.com/jordy-jose/CSC_510_group_d/tree/master/Solution3) <br />
 
-5. Presentation Slides:
+5. [Presentation Slides] (https://github.com/jordy-jose/CSC_510_group_d/blob/master/presentation.pdf) <br />
 
 6. Report:
