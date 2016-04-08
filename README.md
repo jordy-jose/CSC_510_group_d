@@ -27,4 +27,4 @@ Academic Project - CSC 510 - Software Engineering
 
 5. [Presentation Slides] (https://github.com/jordy-jose/CSC_510_group_d/blob/master/presentation.pdf) <br />
 
-6. Report:
+6. [Report] (https://github.com/jordy-jose/CSC_510_group_d/blob/master/Final_Report.pdf) 
